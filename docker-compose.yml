@@ -1,31 +1,30 @@
-version: '3'
+version: '3.9'
 
 services:
   payload:
     image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: npm run dev
     ports:
       - '3000:3000'
-    volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
-    depends_on:
-      - mongo
     env_file:
       - .env
+    depends_on:
+      - postgres
 
-  mongo:
-    image: mongo:latest
+  postgres:
+    image: postgres:16
+    container_name: payload-postgres
+    environment:
+      POSTGRES_DB: payload
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: payload
     ports:
-      - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
+      - '5432:5432'
     volumes:
-      - data:/data/db
-    logging:
-      driver: none
+      - pgdata:/var/lib/postgresql/data
 
 volumes:
-  data:
-  node_modules:
+  pgdata:

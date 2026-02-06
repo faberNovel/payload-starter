@@ -216,9 +216,68 @@ This command will check for any migrations that have not yet been run and try to
 
 Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
 
+#### First-time setup
+
 1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+2. Start the PostgreSQL database:
+
+   ```bash
+   docker-compose up -d postgres
+   ```
+
+3. Install dependencies (run in your **host terminal**, not in Docker):
+
+   ```bash
+   pnpm install
+   ```
+
+4. Create and run initial migrations (run in your **host terminal**, not in Docker):
+
+   ```bash
+   pnpm payload migrate:create
+   pnpm payload migrate
+   ```
+
+5. Start the full development environment:
+
+   ```bash
+   docker-compose up
+   ```
+
+6. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+
+#### Working with migrations in Docker
+
+When making schema changes to your Payload collections or globals:
+
+1. **Create a new migration** after making changes to your schema (run in your **host terminal**):
+
+   ```bash
+   pnpm payload migrate:create
+   ```
+
+2. **Apply migrations** to your database (run in your **host terminal**):
+
+   ```bash
+   pnpm payload migrate
+   ```
+
+3. **Reset and rebuild** (if needed for major changes):
+
+   ```bash
+   docker-compose down -v  # Remove volumes to reset database
+   docker-compose up -d postgres  # Start only database
+   pnpm payload migrate  # Apply all migrations
+   docker-compose up  # Start full environment
+   ```
+
+#### Useful Docker commands
+
+- **Start only database**: `docker-compose up -d postgres`
+- **View logs**: `docker-compose logs -f`
+- **Stop all services**: `docker-compose down`
+- **Reset database**: `docker-compose down -v postgres`
+- **Rebuild containers**: `docker-compose up --build`
 
 That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
 
