@@ -3,12 +3,20 @@ version: '3.9'
 services:
   payload:
     image: node:18-alpine
+    platform: linux/arm64/v8
     working_dir: /app
     volumes:
       - .:/app
-    command: npm run dev
+    command: |
+      sh -c "
+        apk add --no-cache libc6-compat &&
+        pnpm install &&
+        pnpm dev
+      "
     ports:
-      - '3000:3000'
+      - '3001:3000'
+    environment:
+      - CI=true
     env_file:
       - .env
     depends_on:
