@@ -40,9 +40,10 @@ pnpx create-payload-app my-project -t website
 ### Development
 
 1. First [clone the repo](#clone) if you have not done so already
-1. `cd my-project && cp .env.example .env` to copy the example environment variables
-1. `pnpm install && pnpm dev` to install dependencies and start the dev server
-1. open `http://localhost:3000` to open the app in your browser
+2. `cd my-project && cp .env.example .env` to copy the example environment variables
+3. Make sure that your `.env` file uses `postgres` instead of `localhost` or `127.0.0.1` for `DATABASE_URL` database address
+4. `pnpm install && pnpm dev` to install dependencies and start the dev server
+5. open `http://localhost:3000` to open the app in your browser
 
 That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
 
@@ -216,9 +217,71 @@ This command will check for any migrations that have not yet been run and try to
 
 Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
 
+#### First-time setup
+
 1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+
+2. Make sure the docker-compose file uses `node:20-alpine` for payload and has `corepack enable pnpm`
+
+3. Start the PostgreSQL database:
+
+   ```bash
+   docker-compose up -d postgres
+   ```
+
+4. Install dependencies (run in your **host terminal**, not in Docker):
+
+   ```bash
+   pnpm install
+   ```
+
+5. Create and run initial migrations (run in your **host terminal**, not in Docker):
+
+   ```bash
+   pnpm payload migrate:create
+   pnpm payload migrate
+   ```
+
+6. Start the full development environment:
+
+   ```bash
+   docker-compose up
+   ```
+
+7. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
+
+#### Working with migrations in Docker
+
+When making schema changes to your Payload collections or globals:
+
+1. **Create a new migration** after making changes to your schema (run in your **host terminal**):
+
+   ```bash
+   pnpm payload migrate:create
+   ```
+
+2. **Apply migrations** to your database (run in your **host terminal**):
+
+   ```bash
+   pnpm payload migrate
+   ```
+
+3. **Reset and rebuild** (if needed for major changes):
+
+   ```bash
+   docker-compose down -v  # Remove volumes to reset database
+   docker-compose up -d postgres  # Start only database
+   pnpm payload migrate  # Apply all migrations
+   docker-compose up  # Start full environment
+   ```
+
+#### Useful Docker commands
+
+- **Start only database**: `docker-compose up -d postgres`
+- **View logs**: `docker-compose logs -f`
+- **Stop all services**: `docker-compose down`
+- **Reset database**: `docker-compose down -v postgres`
+- **Rebuild containers**: `docker-compose up --build`
 
 That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
 
