@@ -1112,11 +1112,11 @@ For deeper exploration of specific topics, refer to the context files located in
 
 ## Resources
 
-- Docs: https://payloadcms.com/docs
-- LLM Context: https://payloadcms.com/llms-full.txt
-- GitHub: https://github.com/payloadcms/payload
-- Examples: https://github.com/payloadcms/payload/tree/main/examples
-- Templates: https://github.com/payloadcms/payload/tree/main/templates
+- Docs: <https://payloadcms.com/docs>
+- LLM Context: <https://payloadcms.com/llms-full.txt>
+- GitHub: <https://github.com/payloadcms/payload>
+- Examples: <https://github.com/payloadcms/payload/tree/main/examples>
+- Templates: <https://github.com/payloadcms/payload/tree/main/templates>
 
 <!-- NEXTJS-DOCS-START -->
 
@@ -1530,6 +1530,194 @@ The following Next.js documentation files are available in the `.next-docs/` dir
 
 **Usage**: Reference these files when answering Next.js-related questions. The files contain comprehensive documentation for Next.js features, APIs, and best practices.
 
-**Last Updated**: 2026-02-12T14:16:21.823Z
+**Last Updated**: 2026-02-12T15:50:53.543Z
 
 <!-- NEXTJS-DOCS-END -->
+
+<!-- PAYLOAD-DOCS-START -->
+
+## Payload CMS Documentation Index (v3.74.0)
+
+The following Payload CMS documentation files are available in the `.payload-docs/` directory:
+
+- **access-control/**:
+  - [collections.mdx](.payload-docs/access-control/collections.mdx) (13.7KB)
+  - [fields.mdx](.payload-docs/access-control/fields.mdx) (5.6KB)
+  - [globals.mdx](.payload-docs/access-control/globals.mdx) (5.8KB)
+  - [overview.mdx](.payload-docs/access-control/overview.mdx) (4.7KB)
+- **admin/**:
+  - [accessibility.mdx](.payload-docs/admin/accessibility.mdx) (1.8KB)
+  - [customizing-css.mdx](.payload-docs/admin/customizing-css.mdx) (4.5KB)
+  - [locked-documents.mdx](.payload-docs/admin/locked-documents.mdx) (4.4KB)
+  - [metadata.mdx](.payload-docs/admin/metadata.mdx) (9.7KB)
+  - [overview.mdx](.payload-docs/admin/overview.mdx) (21.0KB)
+  - [preferences.mdx](.payload-docs/admin/preferences.mdx) (6.3KB)
+  - [preview.mdx](.payload-docs/admin/preview.mdx) (8.5KB)
+  - [react-hooks.mdx](.payload-docs/admin/react-hooks.mdx) (42.5KB)
+- **authentication/**:
+  - [api-keys.mdx](.payload-docs/authentication/api-keys.mdx) (4.0KB)
+  - [cookies.mdx](.payload-docs/authentication/cookies.mdx) (5.0KB)
+  - [custom-strategies.mdx](.payload-docs/authentication/custom-strategies.mdx) (3.8KB)
+  - [email.mdx](.payload-docs/authentication/email.mdx) (8.4KB)
+  - [jwt.mdx](.payload-docs/authentication/jwt.mdx) (2.2KB)
+  - [operations.mdx](.payload-docs/authentication/operations.mdx) (12.6KB)
+  - [overview.mdx](.payload-docs/authentication/overview.mdx) (13.6KB)
+  - [token-data.mdx](.payload-docs/authentication/token-data.mdx) (2.4KB)
+- **configuration/**:
+  - [collections.mdx](.payload-docs/configuration/collections.mdx) (31.0KB)
+  - [environment-vars.mdx](.payload-docs/configuration/environment-vars.mdx) (3.3KB)
+  - [globals.mdx](.payload-docs/configuration/globals.mdx) (14.2KB)
+  - [i18n.mdx](.payload-docs/configuration/i18n.mdx) (8.7KB)
+  - [localization.mdx](.payload-docs/configuration/localization.mdx) (13.7KB)
+  - [overview.mdx](.payload-docs/configuration/overview.mdx) (20.9KB)
+- **custom-components/**:
+  - [custom-providers.mdx](.payload-docs/custom-components/custom-providers.mdx) (1.7KB)
+  - [custom-views.mdx](.payload-docs/custom-components/custom-views.mdx) (14.7KB)
+  - [dashboard.mdx](.payload-docs/custom-components/dashboard.mdx) (5.0KB)
+  - [document-views.mdx](.payload-docs/custom-components/document-views.mdx) (7.6KB)
+  - [edit-view.mdx](.payload-docs/custom-components/edit-view.mdx) (21.0KB)
+  - [list-view.mdx](.payload-docs/custom-components/list-view.mdx) (9.6KB)
+  - [overview.mdx](.payload-docs/custom-components/overview.mdx) (21.9KB)
+  - [root-components.mdx](.payload-docs/custom-components/root-components.mdx) (15.0KB)
+- **database/**:
+  - [indexes.mdx](.payload-docs/database/indexes.mdx) (2.2KB)
+  - [migrations.mdx](.payload-docs/database/migrations.mdx) (13.7KB)
+  - [mongodb.mdx](.payload-docs/database/mongodb.mdx) (9.3KB)
+  - [overview.mdx](.payload-docs/database/overview.mdx) (4.0KB)
+  - [postgres.mdx](.payload-docs/database/postgres.mdx) (12.9KB)
+  - [sqlite.mdx](.payload-docs/database/sqlite.mdx) (15.1KB)
+  - [transactions.mdx](.payload-docs/database/transactions.mdx) (5.2KB)
+- **ecommerce/**:
+  - [advanced.mdx](.payload-docs/ecommerce/advanced.mdx) (24.2KB)
+  - [frontend.mdx](.payload-docs/ecommerce/frontend.mdx) (21.8KB)
+  - [overview.mdx](.payload-docs/ecommerce/overview.mdx) (5.7KB)
+  - [payments.mdx](.payload-docs/ecommerce/payments.mdx) (21.1KB)
+  - [plugin.mdx](.payload-docs/ecommerce/plugin.mdx) (39.9KB)
+- **email/**:
+  - [overview.mdx](.payload-docs/email/overview.mdx) (11.1KB)
+- **examples/**:
+  - [overview.mdx](.payload-docs/examples/overview.mdx) (1.7KB)
+- **fields/**:
+  - [array.mdx](.payload-docs/fields/array.mdx) (12.7KB)
+  - [blocks.mdx](.payload-docs/fields/blocks.mdx) (24.1KB)
+  - [checkbox.mdx](.payload-docs/fields/checkbox.mdx) (8.4KB)
+  - [code.mdx](.payload-docs/fields/code.mdx) (10.5KB)
+  - [collapsible.mdx](.payload-docs/fields/collapsible.mdx) (3.4KB)
+  - [date.mdx](.payload-docs/fields/date.mdx) (17.4KB)
+  - [email.mdx](.payload-docs/fields/email.mdx) (9.4KB)
+  - [group.mdx](.payload-docs/fields/group.mdx) (9.5KB)
+  - [join.mdx](.payload-docs/fields/join.mdx) (16.6KB)
+  - [json.mdx](.payload-docs/fields/json.mdx) (12.0KB)
+  - [number.mdx](.payload-docs/fields/number.mdx) (11.2KB)
+  - [overview.mdx](.payload-docs/fields/overview.mdx) (46.9KB)
+  - [point.mdx](.payload-docs/fields/point.mdx) (10.1KB)
+  - [radio.mdx](.payload-docs/fields/radio.mdx) (10.9KB)
+  - [relationship.mdx](.payload-docs/fields/relationship.mdx) (20.1KB)
+  - [rich-text.mdx](.payload-docs/fields/rich-text.mdx) (7.2KB)
+  - [row.mdx](.payload-docs/fields/row.mdx) (2.3KB)
+  - [select.mdx](.payload-docs/fields/select.mdx) (14.0KB)
+  - [tabs.mdx](.payload-docs/fields/tabs.mdx) (5.3KB)
+  - [text.mdx](.payload-docs/fields/text.mdx) (16.0KB)
+  - [textarea.mdx](.payload-docs/fields/textarea.mdx) (10.8KB)
+  - [ui.mdx](.payload-docs/fields/ui.mdx) (3.1KB)
+  - [upload.mdx](.payload-docs/fields/upload.mdx) (13.4KB)
+- **folders/**:
+  - [overview.mdx](.payload-docs/folders/overview.mdx) (3.0KB)
+- **getting-started/**:
+  - [concepts.mdx](.payload-docs/getting-started/concepts.mdx) (9.1KB)
+  - [installation.mdx](.payload-docs/getting-started/installation.mdx) (7.5KB)
+  - [what-is-payload.mdx](.payload-docs/getting-started/what-is-payload.mdx) (9.2KB)
+- **graphql/**:
+  - [extending.mdx](.payload-docs/graphql/extending.mdx) (5.7KB)
+  - [graphql-schema.mdx](.payload-docs/graphql/graphql-schema.mdx) (2.2KB)
+  - [overview.mdx](.payload-docs/graphql/overview.mdx) (7.6KB)
+- **hooks/**:
+  - [collections.mdx](.payload-docs/hooks/collections.mdx) (31.6KB)
+  - [context.mdx](.payload-docs/hooks/context.mdx) (5.0KB)
+  - [fields.mdx](.payload-docs/hooks/fields.mdx) (14.2KB)
+  - [globals.mdx](.payload-docs/hooks/globals.mdx) (13.3KB)
+  - [overview.mdx](.payload-docs/hooks/overview.mdx) (8.7KB)
+- **integrations/**:
+  - [vercel-content-link.mdx](.payload-docs/integrations/vercel-content-link.mdx) (4.8KB)
+- **jobs-queue/**:
+  - [jobs.mdx](.payload-docs/jobs-queue/jobs.mdx) (7.8KB)
+  - [overview.mdx](.payload-docs/jobs-queue/overview.mdx) (4.6KB)
+  - [queues.mdx](.payload-docs/jobs-queue/queues.mdx) (13.9KB)
+  - [quick-start-example.mdx](.payload-docs/jobs-queue/quick-start-example.mdx) (3.8KB)
+  - [schedules.mdx](.payload-docs/jobs-queue/schedules.mdx) (13.8KB)
+  - [tasks.mdx](.payload-docs/jobs-queue/tasks.mdx) (17.5KB)
+  - [workflows.mdx](.payload-docs/jobs-queue/workflows.mdx) (21.8KB)
+- **live-preview/**:
+  - [client.mdx](.payload-docs/live-preview/client.mdx) (12.8KB)
+  - [frontend.mdx](.payload-docs/live-preview/frontend.mdx) (0.7KB)
+  - [overview.mdx](.payload-docs/live-preview/overview.mdx) (9.5KB)
+  - [server.mdx](.payload-docs/live-preview/server.mdx) (7.2KB)
+- **local-api/**:
+  - [access-control.mdx](.payload-docs/local-api/access-control.mdx) (2.3KB)
+  - [outside-nextjs.mdx](.payload-docs/local-api/outside-nextjs.mdx) (3.3KB)
+  - [overview.mdx](.payload-docs/local-api/overview.mdx) (20.1KB)
+  - [server-functions.mdx](.payload-docs/local-api/server-functions.mdx) (15.4KB)
+- **migration-guide/**:
+  - [overview.mdx](.payload-docs/migration-guide/overview.mdx) (35.4KB)
+- **performance/**:
+  - [overview.mdx](.payload-docs/performance/overview.mdx) (8.4KB)
+- **plugins/**:
+  - [build-your-own.mdx](.payload-docs/plugins/build-your-own.mdx) (10.4KB)
+  - [form-builder.mdx](.payload-docs/plugins/form-builder.mdx) (25.8KB)
+  - [import-export.mdx](.payload-docs/plugins/import-export.mdx) (24.6KB)
+  - [mcp.mdx](.payload-docs/plugins/mcp.mdx) (16.9KB)
+  - [multi-tenant.mdx](.payload-docs/plugins/multi-tenant.mdx) (12.1KB)
+  - [nested-docs.mdx](.payload-docs/plugins/nested-docs.mdx) (10.1KB)
+  - [overview.mdx](.payload-docs/plugins/overview.mdx) (6.9KB)
+  - [redirects.mdx](.payload-docs/plugins/redirects.mdx) (5.0KB)
+  - [search.mdx](.payload-docs/plugins/search.mdx) (9.4KB)
+  - [sentry.mdx](.payload-docs/plugins/sentry.mdx) (5.5KB)
+  - [seo.mdx](.payload-docs/plugins/seo.mdx) (11.5KB)
+  - [stripe.mdx](.payload-docs/plugins/stripe.mdx) (13.1KB)
+- **production/**:
+  - [building-without-a-db-connection.mdx](.payload-docs/production/building-without-a-db-connection.mdx) (2.1KB)
+  - [deployment.mdx](.payload-docs/production/deployment.mdx) (10.6KB)
+  - [preventing-abuse.mdx](.payload-docs/production/preventing-abuse.mdx) (3.9KB)
+- **queries/**:
+  - [depth.mdx](.payload-docs/queries/depth.mdx) (3.3KB)
+  - [overview.mdx](.payload-docs/queries/overview.mdx) (12.1KB)
+  - [pagination.mdx](.payload-docs/queries/pagination.mdx) (5.3KB)
+  - [select.mdx](.payload-docs/queries/select.mdx) (6.6KB)
+  - [sort.mdx](.payload-docs/queries/sort.mdx) (3.3KB)
+- **query-presets/**:
+  - [overview.mdx](.payload-docs/query-presets/overview.mdx) (8.7KB)
+- **rest-api/**:
+  - [overview.mdx](.payload-docs/rest-api/overview.mdx) (28.3KB)
+- **rich-text/**:
+  - [blocks.mdx](.payload-docs/rich-text/blocks.mdx) (15.4KB)
+  - [converters.mdx](.payload-docs/rich-text/converters.mdx) (3.7KB)
+  - [converting-html.mdx](.payload-docs/rich-text/converting-html.mdx) (7.4KB)
+  - [converting-jsx.mdx](.payload-docs/rich-text/converting-jsx.mdx) (5.8KB)
+  - [converting-markdown.mdx](.payload-docs/rich-text/converting-markdown.mdx) (7.5KB)
+  - [converting-plaintext.mdx](.payload-docs/rich-text/converting-plaintext.mdx) (1.9KB)
+  - [custom-features.mdx](.payload-docs/rich-text/custom-features.mdx) (40.6KB)
+  - [migration.mdx](.payload-docs/rich-text/migration.mdx) (10.5KB)
+  - [official-features.mdx](.payload-docs/rich-text/official-features.mdx) (19.5KB)
+  - [overview.mdx](.payload-docs/rich-text/overview.mdx) (11.8KB)
+  - [rendering-on-demand.mdx](.payload-docs/rich-text/rendering-on-demand.mdx) (3.9KB)
+  - [slate.mdx](.payload-docs/rich-text/slate.mdx) (12.4KB)
+- **trash/**:
+  - [overview.mdx](.payload-docs/trash/overview.mdx) (5.0KB)
+- **troubleshooting/**:
+  - [troubleshooting.mdx](.payload-docs/troubleshooting/troubleshooting.mdx) (8.6KB)
+- **typescript/**:
+  - [generating-types.mdx](.payload-docs/typescript/generating-types.mdx) (6.9KB)
+  - [overview.mdx](.payload-docs/typescript/overview.mdx) (1.5KB)
+- **upload/**:
+  - [overview.mdx](.payload-docs/upload/overview.mdx) (41.6KB)
+  - [storage-adapters.mdx](.payload-docs/upload/storage-adapters.mdx) (21.1KB)
+- **versions/**:
+  - [autosave.mdx](.payload-docs/versions/autosave.mdx) (4.0KB)
+  - [drafts.mdx](.payload-docs/versions/drafts.mdx) (13.4KB)
+  - [overview.mdx](.payload-docs/versions/overview.mdx) (11.9KB)
+
+**Usage**: Reference these files when answering Payload CMS-related questions. The files contain comprehensive documentation for Payload CMS features, APIs, configuration, and best practices.
+
+**Last Updated**: 2026-02-12T15:50:53.544Z
+
+<!-- PAYLOAD-DOCS-END -->

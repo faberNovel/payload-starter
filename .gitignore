@@ -19,3 +19,9 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Payload CMS documentation for AI agents
+.payload-docs/
+
+# Next.js documentation for AI agents
+.next-docs/
