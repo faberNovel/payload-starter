@@ -4,20 +4,32 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-import type { Header } from '@/payload-types'
+import type { Header, Language } from '@/payload-types'
 
+import { LanguageSelector } from '@/components/LanguageSelector'
 import { Logo } from '@/components/Logo/Logo'
+import type { LocaleCode } from '@/i18n/locales'
+import { DEFAULT_LOCALE, LOCALE_CODES } from '@/i18n/locales'
 import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
   data: Header
+  languages?: Language['languages']
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
+export const HeaderClient: React.FC<HeaderClientProps> = ({ data, languages }) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
+
+  // Derive current locale from the URL pathname
+  const segments = pathname.split('/').filter(Boolean)
+  const codes: readonly string[] = LOCALE_CODES
+  const currentLocale: LocaleCode =
+    segments.length > 0 && codes.includes(segments[0])
+      ? (segments[0] as LocaleCode)
+      : DEFAULT_LOCALE
 
   useEffect(() => {
     setHeaderTheme(null)
@@ -35,7 +47,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         <Link href="/">
           <Logo loading="eager" priority="high" className="invert dark:invert-0" />
         </Link>
-        <HeaderNav data={data} />
+        <div className="flex items-center gap-3">
+          <HeaderNav data={data} />
+          <LanguageSelector languages={languages} currentLocale={currentLocale} />
+        </div>
       </div>
     </header>
   )
