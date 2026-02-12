@@ -18,17 +18,17 @@ You are an expert Payload CMS developer. When working with Payload projects, fol
 
 ## Project Structure
 
-```
+```md
 src/
 ├── app/
-│   ├── (frontend)/          # Frontend routes
-│   └── (payload)/           # Payload admin routes
-├── collections/             # Collection configs
-├── globals/                 # Global configs
-├── components/              # Custom React components
-├── hooks/                   # Hook functions
-├── access/                  # Access control functions
-└── payload.config.ts        # Main config
+│ ├── (frontend)/ # Frontend routes
+│ └── (payload)/ # Payload admin routes
+├── collections/ # Collection configs
+├── globals/ # Global configs
+├── components/ # Custom React components
+├── hooks/ # Hook functions
+├── access/ # Access control functions
+└── payload.config.ts # Main config
 ```
 
 ## Configuration
@@ -589,14 +589,7 @@ export default buildConfig({
 3. **Global Components** - Global document views
 4. **Field Components** - Custom field UI and cells
 
-### Component Types
-
-1. **Root Components** - Global Admin Panel (logo, nav, header)
-2. **Collection Components** - Collection-specific (edit view, list view)
-3. **Global Components** - Global document views
-4. **Field Components** - Custom field UI and cells
-
-### Server vs Client Components
+#### Server vs Client Components
 
 **All components are Server Components by default** (can use Local API directly):
 
@@ -725,7 +718,6 @@ export const Posts: CollectionConfig = {
 ### Performance Best Practices
 
 1. **Import correctly:**
-
    - Admin Panel: `import { Button } from '@payloadcms/ui'`
    - Frontend: `import { Button } from '@payloadcms/ui/elements/Button'`
 
@@ -740,7 +732,6 @@ export const Posts: CollectionConfig = {
    ```
 
 3. **Prefer Server Components** - Only use Client Components when you need:
-
    - State (useState, useReducer)
    - Effects (useEffect)
    - Event handlers (onClick, onChange)
@@ -777,7 +768,7 @@ export function MyComponent() {
 }
 ```
 
-### Type Safety
+### TS Type Safety
 
 ```tsx
 import type {
@@ -1040,19 +1031,16 @@ For deeper exploration of specific topics, refer to the context files located in
 ### Available Context Files
 
 1. **`payload-overview.md`** - High-level architecture and core concepts
-
    - Payload structure and initialization
    - Configuration fundamentals
    - Database adapters overview
 
 2. **`security-critical.md`** - Critical security patterns (⚠️ IMPORTANT)
-
    - Local API access control
    - Transaction safety in hooks
    - Preventing infinite hook loops
 
 3. **`collections.md`** - Collection configurations
-
    - Basic collection patterns
    - Auth collections with RBAC
    - Upload collections
@@ -1060,7 +1048,6 @@ For deeper exploration of specific topics, refer to the context files located in
    - Globals
 
 4. **`fields.md`** - Field types and patterns
-
    - All field types with examples
    - Conditional fields
    - Virtual fields
@@ -1068,13 +1055,11 @@ For deeper exploration of specific topics, refer to the context files located in
    - Common field patterns
 
 5. **`field-type-guards.md`** - TypeScript field type utilities
-
    - Field type checking utilities
    - Safe type narrowing
    - Runtime field validation
 
 6. **`access-control.md`** - Permission patterns
-
    - Collection-level access
    - Field-level access
    - Row-level security
@@ -1082,48 +1067,41 @@ For deeper exploration of specific topics, refer to the context files located in
    - Multi-tenant access control
 
 7. **`access-control-advanced.md`** - Complex access patterns
-
    - Nested document access
    - Cross-collection permissions
    - Dynamic role hierarchies
    - Performance optimization
 
 8. **`hooks.md`** - Lifecycle hooks
-
    - Collection hooks
    - Field hooks
    - Hook context patterns
    - Common hook recipes
 
 9. **`queries.md`** - Database operations
-
    - Local API usage
    - Query operators
    - Complex queries with AND/OR
    - Performance optimization
 
 10. **`endpoints.md`** - Custom API endpoints
-
     - REST endpoint patterns
     - Authentication in endpoints
     - Error handling
     - Route parameters
 
 11. **`adapters.md`** - Database and storage adapters
-
     - MongoDB, PostgreSQL, SQLite patterns
     - Storage adapter usage (S3, Azure, GCS, etc.)
     - Custom adapter development
 
 12. **`plugin-development.md`** - Creating plugins
-
     - Plugin architecture
     - Modifying configuration
     - Plugin hooks
     - Best practices
 
 13. **`components.md`** - Custom Components
-
     - Component types (Root, Collection, Global, Field)
     - Server vs Client Components
     - Component paths and definition
@@ -1139,3 +1117,419 @@ For deeper exploration of specific topics, refer to the context files located in
 - GitHub: https://github.com/payloadcms/payload
 - Examples: https://github.com/payloadcms/payload/tree/main/examples
 - Templates: https://github.com/payloadcms/payload/tree/main/templates
+
+<!-- NEXTJS-DOCS-START -->
+
+## Next.js Documentation Index (v15.4.11)
+
+The following Next.js documentation files are available in the `.next-docs/` directory:
+
+- [index.mdx](.next-docs/index.mdx) (2.5KB)
+- **01-app/**:
+  - [index.mdx](.next-docs/01-app/index.mdx) (0.6KB)
+  - **01-getting-started/**:
+    - [01-installation.mdx](.next-docs/01-app/01-getting-started/01-installation.mdx) (11.2KB)
+    - [02-project-structure.mdx](.next-docs/01-app/01-getting-started/02-project-structure.mdx) (24.2KB)
+    - [03-layouts-and-pages.mdx](.next-docs/01-app/01-getting-started/03-layouts-and-pages.mdx) (10.8KB)
+    - [04-linking-and-navigating.mdx](.next-docs/01-app/01-getting-started/04-linking-and-navigating.mdx) (16.4KB)
+    - [05-server-and-client-components.mdx](.next-docs/01-app/01-getting-started/05-server-and-client-components.mdx) (17.9KB)
+    - [06-partial-prerendering.mdx](.next-docs/01-app/01-getting-started/06-partial-prerendering.mdx) (9.3KB)
+    - [07-fetching-data.mdx](.next-docs/01-app/01-getting-started/07-fetching-data.mdx) (20.6KB)
+    - [08-updating-data.mdx](.next-docs/01-app/01-getting-started/08-updating-data.mdx) (12.5KB)
+    - [09-caching-and-revalidating.mdx](.next-docs/01-app/01-getting-started/09-caching-and-revalidating.mdx) (7.2KB)
+    - [10-error-handling.mdx](.next-docs/01-app/01-getting-started/10-error-handling.mdx) (10.1KB)
+    - [11-css.mdx](.next-docs/01-app/01-getting-started/11-css.mdx) (8.5KB)
+    - [12-images.mdx](.next-docs/01-app/01-getting-started/12-images.mdx) (5.7KB)
+    - [13-fonts.mdx](.next-docs/01-app/01-getting-started/13-fonts.mdx) (4.8KB)
+    - [14-metadata-and-og-images.mdx](.next-docs/01-app/01-getting-started/14-metadata-and-og-images.mdx) (11.1KB)
+    - [15-route-handlers-and-middleware.mdx](.next-docs/01-app/01-getting-started/15-route-handlers-and-middleware.mdx) (7.5KB)
+    - [16-deploying.mdx](.next-docs/01-app/01-getting-started/16-deploying.mdx) (3.9KB)
+    - [17-upgrading.mdx](.next-docs/01-app/01-getting-started/17-upgrading.mdx) (1.9KB)
+    - [index.mdx](.next-docs/01-app/01-getting-started/index.mdx) (0.7KB)
+  - **02-guides/**:
+    - [analytics.mdx](.next-docs/01-app/02-guides/analytics.mdx) (6.8KB)
+    - [authentication.mdx](.next-docs/01-app/02-guides/authentication.mdx) (52.9KB)
+    - [backend-for-frontend.mdx](.next-docs/01-app/02-guides/backend-for-frontend.mdx) (24.1KB)
+    - [caching.mdx](.next-docs/01-app/02-guides/caching.mdx) (35.4KB)
+    - [ci-build-caching.mdx](.next-docs/01-app/02-guides/ci-build-caching.mdx) (4.8KB)
+    - [content-security-policy.mdx](.next-docs/01-app/02-guides/content-security-policy.mdx) (8.2KB)
+    - [css-in-js.mdx](.next-docs/01-app/02-guides/css-in-js.mdx) (10.7KB)
+    - [custom-server.mdx](.next-docs/01-app/02-guides/custom-server.mdx) (5.7KB)
+    - [data-security.mdx](.next-docs/01-app/02-guides/data-security.mdx) (18.1KB)
+    - [debugging.mdx](.next-docs/01-app/02-guides/debugging.mdx) (8.6KB)
+    - [draft-mode.mdx](.next-docs/01-app/02-guides/draft-mode.mdx) (7.5KB)
+    - [environment-variables.mdx](.next-docs/01-app/02-guides/environment-variables.mdx) (11.4KB)
+    - [forms.mdx](.next-docs/01-app/02-guides/forms.mdx) (13.6KB)
+    - [incremental-static-regeneration.mdx](.next-docs/01-app/02-guides/incremental-static-regeneration.mdx) (18.9KB)
+    - [index.mdx](.next-docs/01-app/02-guides/index.mdx) (0.1KB)
+    - [instrumentation.mdx](.next-docs/01-app/02-guides/instrumentation.mdx) (4.0KB)
+    - [internationalization.mdx](.next-docs/01-app/02-guides/internationalization.mdx) (7.2KB)
+    - [json-ld.mdx](.next-docs/01-app/02-guides/json-ld.mdx) (3.0KB)
+    - [lazy-loading.mdx](.next-docs/01-app/02-guides/lazy-loading.mdx) (8.5KB)
+    - [local-development.mdx](.next-docs/01-app/02-guides/local-development.mdx) (8.4KB)
+    - [mdx.mdx](.next-docs/01-app/02-guides/mdx.mdx) (25.4KB)
+    - [memory-usage.mdx](.next-docs/01-app/02-guides/memory-usage.mdx) (7.7KB)
+    - [multi-tenant.mdx](.next-docs/01-app/02-guides/multi-tenant.mdx) (0.4KB)
+    - [multi-zones.mdx](.next-docs/01-app/02-guides/multi-zones.mdx) (7.1KB)
+    - [open-telemetry.mdx](.next-docs/01-app/02-guides/open-telemetry.mdx) (13.7KB)
+    - [package-bundling.mdx](.next-docs/01-app/02-guides/package-bundling.mdx) (5.5KB)
+    - [prefetching.mdx](.next-docs/01-app/02-guides/prefetching.mdx) (11.9KB)
+    - [production-checklist.mdx](.next-docs/01-app/02-guides/production-checklist.mdx) (12.7KB)
+    - [progressive-web-apps.mdx](.next-docs/01-app/02-guides/progressive-web-apps.mdx) (20.8KB)
+    - [redirecting.mdx](.next-docs/01-app/02-guides/redirecting.mdx) (21.5KB)
+    - [sass.mdx](.next-docs/01-app/02-guides/sass.mdx) (3.1KB)
+    - [scripts.mdx](.next-docs/01-app/02-guides/scripts.mdx) (11.8KB)
+    - [self-hosting.mdx](.next-docs/01-app/02-guides/self-hosting.mdx) (13.7KB)
+    - [single-page-applications.mdx](.next-docs/01-app/02-guides/single-page-applications.mdx) (15.7KB)
+    - [static-exports.mdx](.next-docs/01-app/02-guides/static-exports.mdx) (12.2KB)
+    - [tailwind-css.mdx](.next-docs/01-app/02-guides/tailwind-css.mdx) (5.1KB)
+    - [third-party-libraries.mdx](.next-docs/01-app/02-guides/third-party-libraries.mdx) (16.1KB)
+    - [videos.mdx](.next-docs/01-app/02-guides/videos.mdx) (16.2KB)
+    - **migrating/**:
+      - [app-router-migration.mdx](.next-docs/01-app/02-guides/migrating/app-router-migration.mdx) (36.5KB)
+      - [from-create-react-app.mdx](.next-docs/01-app/02-guides/migrating/from-create-react-app.mdx) (21.2KB)
+      - [from-vite.mdx](.next-docs/01-app/02-guides/migrating/from-vite.mdx) (22.0KB)
+      - [index.mdx](.next-docs/01-app/02-guides/migrating/index.mdx) (0.1KB)
+    - **testing/**:
+      - [cypress.mdx](.next-docs/01-app/02-guides/testing/cypress.mdx) (8.1KB)
+      - [index.mdx](.next-docs/01-app/02-guides/testing/index.mdx) (1.8KB)
+      - [jest.mdx](.next-docs/01-app/02-guides/testing/jest.mdx) (12.7KB)
+      - [playwright.mdx](.next-docs/01-app/02-guides/testing/playwright.mdx) (4.3KB)
+      - [vitest.mdx](.next-docs/01-app/02-guides/testing/vitest.mdx) (5.1KB)
+    - **upgrading/**:
+      - [codemods.mdx](.next-docs/01-app/02-guides/upgrading/codemods.mdx) (12.9KB)
+      - [index.mdx](.next-docs/01-app/02-guides/upgrading/index.mdx) (0.2KB)
+      - [version-14.mdx](.next-docs/01-app/02-guides/upgrading/version-14.mdx) (1.8KB)
+      - [version-15.mdx](.next-docs/01-app/02-guides/upgrading/version-15.mdx) (16.1KB)
+  - **03-api-reference/**:
+    - [07-edge.mdx](.next-docs/01-app/03-api-reference/07-edge.mdx) (28.7KB)
+    - [08-turbopack.mdx](.next-docs/01-app/03-api-reference/08-turbopack.mdx) (14.2KB)
+    - [index.mdx](.next-docs/01-app/03-api-reference/index.mdx) (0.1KB)
+    - **01-directives/**:
+      - [index.mdx](.next-docs/01-app/03-api-reference/01-directives/index.mdx) (0.1KB)
+      - [use-cache.mdx](.next-docs/01-app/03-api-reference/01-directives/use-cache.mdx) (11.4KB)
+      - [use-client.mdx](.next-docs/01-app/03-api-reference/01-directives/use-client.mdx) (3.7KB)
+      - [use-server.mdx](.next-docs/01-app/03-api-reference/01-directives/use-server.mdx) (4.9KB)
+    - **02-components/**:
+      - [font.mdx](.next-docs/01-app/03-api-reference/02-components/font.mdx) (30.8KB)
+      - [form.mdx](.next-docs/01-app/03-api-reference/02-components/form.mdx) (14.0KB)
+      - [image.mdx](.next-docs/01-app/03-api-reference/02-components/image.mdx) (52.3KB)
+      - [index.mdx](.next-docs/01-app/03-api-reference/02-components/index.mdx) (0.3KB)
+      - [link.mdx](.next-docs/01-app/03-api-reference/02-components/link.mdx) (38.6KB)
+      - [script.mdx](.next-docs/01-app/03-api-reference/02-components/script.mdx) (13.0KB)
+    - **03-file-conventions/**:
+      - [default.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/default.mdx) (2.9KB)
+      - [dynamic-routes.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/dynamic-routes.mdx) (6.3KB)
+      - [error.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/error.mdx) (8.9KB)
+      - [forbidden.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/forbidden.mdx) (1.2KB)
+      - [index.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/index.mdx) (0.1KB)
+      - [instrumentation-client.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/instrumentation-client.mdx) (1.5KB)
+      - [instrumentation.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/instrumentation.mdx) (4.6KB)
+      - [intercepting-routes.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/intercepting-routes.mdx) (3.8KB)
+      - [layout.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/layout.mdx) (17.4KB)
+      - [loading.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/loading.mdx) (6.8KB)
+      - [mdx-components.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/mdx-components.mdx) (1.9KB)
+      - [middleware.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/middleware.mdx) (24.3KB)
+      - [not-found.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/not-found.mdx) (2.7KB)
+      - [page.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/page.mdx) (7.3KB)
+      - [parallel-routes.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/parallel-routes.mdx) (14.9KB)
+      - [public-folder.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/public-folder.mdx) (1.8KB)
+      - [route-groups.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/route-groups.mdx) (1.6KB)
+      - [route-segment-config.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/route-segment-config.mdx) (15.1KB)
+      - [route.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/route.mdx) (18.4KB)
+      - [src-folder.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/src-folder.mdx) (2.0KB)
+      - [template.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/template.mdx) (2.4KB)
+      - [unauthorized.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/unauthorized.mdx) (2.5KB)
+      - **01-metadata/**:
+        - [app-icons.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/01-metadata/app-icons.mdx) (8.8KB)
+        - [index.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/01-metadata/index.mdx) (1.3KB)
+        - [manifest.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/01-metadata/manifest.mdx) (2.2KB)
+        - [opengraph-image.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/01-metadata/opengraph-image.mdx) (14.3KB)
+        - [robots.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/01-metadata/robots.mdx) (3.0KB)
+        - [sitemap.mdx](.next-docs/01-app/03-api-reference/03-file-conventions/01-metadata/sitemap.mdx) (11.2KB)
+    - **04-functions/**:
+      - [after.mdx](.next-docs/01-app/03-api-reference/04-functions/after.mdx) (7.2KB)
+      - [cacheLife.mdx](.next-docs/01-app/03-api-reference/04-functions/cacheLife.mdx) (10.1KB)
+      - [cacheTag.mdx](.next-docs/01-app/03-api-reference/04-functions/cacheTag.mdx) (4.9KB)
+      - [connection.mdx](.next-docs/01-app/03-api-reference/04-functions/connection.mdx) (1.8KB)
+      - [cookies.mdx](.next-docs/01-app/03-api-reference/04-functions/cookies.mdx) (11.3KB)
+      - [draft-mode.mdx](.next-docs/01-app/03-api-reference/04-functions/draft-mode.mdx) (4.7KB)
+      - [fetch.mdx](.next-docs/01-app/03-api-reference/04-functions/fetch.mdx) (5.1KB)
+      - [forbidden.mdx](.next-docs/01-app/03-api-reference/04-functions/forbidden.mdx) (4.4KB)
+      - [generate-image-metadata.mdx](.next-docs/01-app/03-api-reference/04-functions/generate-image-metadata.mdx) (5.5KB)
+      - [generate-metadata.mdx](.next-docs/01-app/03-api-reference/04-functions/generate-metadata.mdx) (43.1KB)
+      - [generate-sitemaps.mdx](.next-docs/01-app/03-api-reference/04-functions/generate-sitemaps.mdx) (2.8KB)
+      - [generate-static-params.mdx](.next-docs/01-app/03-api-reference/04-functions/generate-static-params.mdx) (14.1KB)
+      - [generate-viewport.mdx](.next-docs/01-app/03-api-reference/04-functions/generate-viewport.mdx) (5.9KB)
+      - [headers.mdx](.next-docs/01-app/03-api-reference/04-functions/headers.mdx) (3.9KB)
+      - [image-response.mdx](.next-docs/01-app/03-api-reference/04-functions/image-response.mdx) (5.6KB)
+      - [index.mdx](.next-docs/01-app/03-api-reference/04-functions/index.mdx) (0.3KB)
+      - [next-request.mdx](.next-docs/01-app/03-api-reference/04-functions/next-request.mdx) (6.1KB)
+      - [next-response.mdx](.next-docs/01-app/03-api-reference/04-functions/next-response.mdx) (4.2KB)
+      - [not-found.mdx](.next-docs/01-app/03-api-reference/04-functions/not-found.mdx) (1.3KB)
+      - [permanentRedirect.mdx](.next-docs/01-app/03-api-reference/04-functions/permanentRedirect.mdx) (2.9KB)
+      - [redirect.mdx](.next-docs/01-app/03-api-reference/04-functions/redirect.mdx) (7.7KB)
+      - [revalidatePath.mdx](.next-docs/01-app/03-api-reference/04-functions/revalidatePath.mdx) (4.0KB)
+      - [revalidateTag.mdx](.next-docs/01-app/03-api-reference/04-functions/revalidateTag.mdx) (1.9KB)
+      - [unauthorized.mdx](.next-docs/01-app/03-api-reference/04-functions/unauthorized.mdx) (5.6KB)
+      - [unstable_cache.mdx](.next-docs/01-app/03-api-reference/04-functions/unstable_cache.mdx) (3.3KB)
+      - [unstable_noStore.mdx](.next-docs/01-app/03-api-reference/04-functions/unstable_noStore.mdx) (1.7KB)
+      - [unstable_rethrow.mdx](.next-docs/01-app/03-api-reference/04-functions/unstable_rethrow.mdx) (2.9KB)
+      - [use-link-status.mdx](.next-docs/01-app/03-api-reference/04-functions/use-link-status.mdx) (5.7KB)
+      - [use-params.mdx](.next-docs/01-app/03-api-reference/04-functions/use-params.mdx) (2.4KB)
+      - [use-pathname.mdx](.next-docs/01-app/03-api-reference/04-functions/use-pathname.mdx) (3.6KB)
+      - [use-report-web-vitals.mdx](.next-docs/01-app/03-api-reference/04-functions/use-report-web-vitals.mdx) (8.0KB)
+      - [use-router.mdx](.next-docs/01-app/03-api-reference/04-functions/use-router.mdx) (6.2KB)
+      - [use-search-params.mdx](.next-docs/01-app/03-api-reference/04-functions/use-search-params.mdx) (12.7KB)
+      - [use-selected-layout-segment.mdx](.next-docs/01-app/03-api-reference/04-functions/use-selected-layout-segment.mdx) (5.5KB)
+      - [use-selected-layout-segments.mdx](.next-docs/01-app/03-api-reference/04-functions/use-selected-layout-segments.mdx) (3.1KB)
+      - [userAgent.mdx](.next-docs/01-app/03-api-reference/04-functions/userAgent.mdx) (3.2KB)
+    - **05-config/**:
+      - [02-typescript.mdx](.next-docs/01-app/03-api-reference/05-config/02-typescript.mdx) (11.7KB)
+      - [03-eslint.mdx](.next-docs/01-app/03-api-reference/05-config/03-eslint.mdx) (16.6KB)
+      - [index.mdx](.next-docs/01-app/03-api-reference/05-config/index.mdx) (0.1KB)
+      - **01-next-config-js/**:
+        - [allowedDevOrigins.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/allowedDevOrigins.mdx) (1.1KB)
+        - [appDir.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/appDir.mdx) (0.8KB)
+        - [assetPrefix.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/assetPrefix.mdx) (3.5KB)
+        - [authInterrupts.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/authInterrupts.mdx) (1.0KB)
+        - [basePath.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/basePath.mdx) (2.1KB)
+        - [cacheLife.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/cacheLife.mdx) (2.8KB)
+        - [compress.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/compress.mdx) (1.6KB)
+        - [crossOrigin.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/crossOrigin.mdx) (1.2KB)
+        - [cssChunking.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/cssChunking.mdx) (2.0KB)
+        - [devIndicators.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/devIndicators.mdx) (3.1KB)
+        - [distDir.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/distDir.mdx) (0.8KB)
+        - [dynamicIO.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/dynamicIO.mdx) (1.6KB)
+        - [env.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/env.mdx) (2.3KB)
+        - [eslint.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/eslint.mdx) (1.1KB)
+        - [expireTime.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/expireTime.mdx) (1.0KB)
+        - [exportPathMap.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/exportPathMap.mdx) (4.2KB)
+        - [generateBuildId.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/generateBuildId.mdx) (0.9KB)
+        - [generateEtags.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/generateEtags.mdx) (0.7KB)
+        - [headers.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/headers.mdx) (17.4KB)
+        - [htmlLimitedBots.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/htmlLimitedBots.mdx) (1.2KB)
+        - [httpAgentOptions.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/httpAgentOptions.mdx) (0.9KB)
+        - [images.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/images.mdx) (8.6KB)
+        - [incrementalCacheHandlerPath.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/incrementalCacheHandlerPath.mdx) (3.3KB)
+        - [index.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/index.mdx) (4.6KB)
+        - [inlineCss.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/inlineCss.mdx) (3.3KB)
+        - [logging.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/logging.mdx) (1.9KB)
+        - [mdxRs.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/mdxRs.mdx) (0.5KB)
+        - [middlewareClientMaxBodySize.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/middlewareClientMaxBodySize.mdx) (3.4KB)
+        - [onDemandEntries.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/onDemandEntries.mdx) (0.9KB)
+        - [optimizePackageImports.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/optimizePackageImports.mdx) (1.3KB)
+        - [output.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/output.mdx) (5.2KB)
+        - [pageExtensions.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/pageExtensions.mdx) (2.0KB)
+        - [poweredByHeader.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/poweredByHeader.mdx) (0.6KB)
+        - [ppr.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/ppr.mdx) (2.7KB)
+        - [productionBrowserSourceMaps.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/productionBrowserSourceMaps.mdx) (1.1KB)
+        - [reactCompiler.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/reactCompiler.mdx) (2.7KB)
+        - [reactMaxHeadersLength.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/reactMaxHeadersLength.mdx) (0.9KB)
+        - [reactStrictMode.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/reactStrictMode.mdx) (1.3KB)
+        - [redirects.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/redirects.mdx) (11.4KB)
+        - [rewrites.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/rewrites.mdx) (15.5KB)
+        - [sassOptions.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/sassOptions.mdx) (0.8KB)
+        - [serverActions.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/serverActions.mdx) (1.6KB)
+        - [serverComponentsHmrCache.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/serverComponentsHmrCache.mdx) (1.4KB)
+        - [serverExternalPackages.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/serverExternalPackages.mdx) (2.5KB)
+        - [staleTimes.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/staleTimes.mdx) (2.2KB)
+        - [staticGeneration.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/staticGeneration.mdx) (1.1KB)
+        - [taint.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/taint.mdx) (6.4KB)
+        - [trailingSlash.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/trailingSlash.mdx) (1.5KB)
+        - [transpilePackages.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/transpilePackages.mdx) (0.9KB)
+        - [turbopack.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/turbopack.mdx) (6.9KB)
+        - [typedRoutes.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/typedRoutes.mdx) (0.5KB)
+        - [typescript.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/typescript.mdx) (1.1KB)
+        - [urlImports.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/urlImports.mdx) (2.8KB)
+        - [useCache.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/useCache.mdx) (1.1KB)
+        - [useLightningcss.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/useLightningcss.mdx) (0.6KB)
+        - [viewTransition.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/viewTransition.mdx) (1.8KB)
+        - [webpack.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/webpack.mdx) (3.3KB)
+        - [webVitalsAttribution.mdx](.next-docs/01-app/03-api-reference/05-config/01-next-config-js/webVitalsAttribution.mdx) (1.9KB)
+    - **06-cli/**:
+      - [create-next-app.mdx](.next-docs/01-app/03-api-reference/06-cli/create-next-app.mdx) (4.9KB)
+      - [index.mdx](.next-docs/01-app/03-api-reference/06-cli/index.mdx) (0.7KB)
+      - [next.mdx](.next-docs/01-app/03-api-reference/06-cli/next.mdx) (20.2KB)
+- **02-pages/**:
+  - [index.mdx](.next-docs/02-pages/index.mdx) (0.6KB)
+  - **01-getting-started/**:
+    - [01-installation.mdx](.next-docs/02-pages/01-getting-started/01-installation.mdx) (0.6KB)
+    - [02-project-structure.mdx](.next-docs/02-pages/01-getting-started/02-project-structure.mdx) (0.6KB)
+    - [04-images.mdx](.next-docs/02-pages/01-getting-started/04-images.mdx) (0.6KB)
+    - [05-fonts.mdx](.next-docs/02-pages/01-getting-started/05-fonts.mdx) (0.6KB)
+    - [06-css.mdx](.next-docs/02-pages/01-getting-started/06-css.mdx) (0.7KB)
+    - [11-deploying.mdx](.next-docs/02-pages/01-getting-started/11-deploying.mdx) (0.2KB)
+    - [index.mdx](.next-docs/02-pages/01-getting-started/index.mdx) (0.2KB)
+  - **02-guides/**:
+    - [amp.mdx](.next-docs/02-pages/02-guides/amp.mdx) (4.5KB)
+    - [analytics.mdx](.next-docs/02-pages/02-guides/analytics.mdx) (0.5KB)
+    - [authentication.mdx](.next-docs/02-pages/02-guides/authentication.mdx) (0.6KB)
+    - [babel.mdx](.next-docs/02-pages/02-guides/babel.mdx) (2.1KB)
+    - [ci-build-caching.mdx](.next-docs/02-pages/02-guides/ci-build-caching.mdx) (0.5KB)
+    - [content-security-policy.mdx](.next-docs/02-pages/02-guides/content-security-policy.mdx) (0.6KB)
+    - [css-in-js.mdx](.next-docs/02-pages/02-guides/css-in-js.mdx) (0.5KB)
+    - [custom-server.mdx](.next-docs/02-pages/02-guides/custom-server.mdx) (0.5KB)
+    - [debugging.mdx](.next-docs/02-pages/02-guides/debugging.mdx) (0.5KB)
+    - [draft-mode.mdx](.next-docs/02-pages/02-guides/draft-mode.mdx) (8.0KB)
+    - [environment-variables.mdx](.next-docs/02-pages/02-guides/environment-variables.mdx) (0.5KB)
+    - [forms.mdx](.next-docs/02-pages/02-guides/forms.mdx) (8.7KB)
+    - [incremental-static-regeneration.mdx](.next-docs/02-pages/02-guides/incremental-static-regeneration.mdx) (0.6KB)
+    - [index.mdx](.next-docs/02-pages/02-guides/index.mdx) (0.1KB)
+    - [instrumentation.mdx](.next-docs/02-pages/02-guides/instrumentation.mdx) (0.5KB)
+    - [internationalization.mdx](.next-docs/02-pages/02-guides/internationalization.mdx) (14.7KB)
+    - [lazy-loading.mdx](.next-docs/02-pages/02-guides/lazy-loading.mdx) (0.6KB)
+    - [mdx.mdx](.next-docs/02-pages/02-guides/mdx.mdx) (0.5KB)
+    - [multi-zones.mdx](.next-docs/02-pages/02-guides/multi-zones.mdx) (0.6KB)
+    - [open-telemetry.mdx](.next-docs/02-pages/02-guides/open-telemetry.mdx) (0.5KB)
+    - [package-bundling.mdx](.next-docs/02-pages/02-guides/package-bundling.mdx) (0.6KB)
+    - [post-css.mdx](.next-docs/02-pages/02-guides/post-css.mdx) (5.7KB)
+    - [preview-mode.mdx](.next-docs/02-pages/02-guides/preview-mode.mdx) (14.0KB)
+    - [production-checklist.mdx](.next-docs/02-pages/02-guides/production-checklist.mdx) (0.6KB)
+    - [redirecting.mdx](.next-docs/02-pages/02-guides/redirecting.mdx) (0.5KB)
+    - [sass.mdx](.next-docs/02-pages/02-guides/sass.mdx) (0.5KB)
+    - [scripts.mdx](.next-docs/02-pages/02-guides/scripts.mdx) (0.5KB)
+    - [self-hosting.mdx](.next-docs/02-pages/02-guides/self-hosting.mdx) (0.6KB)
+    - [static-exports.mdx](.next-docs/02-pages/02-guides/static-exports.mdx) (0.6KB)
+    - [tailwind-css.mdx](.next-docs/02-pages/02-guides/tailwind-css.mdx) (0.4KB)
+    - [third-party-libraries.mdx](.next-docs/02-pages/02-guides/third-party-libraries.mdx) (0.6KB)
+    - **migrating/**:
+      - [app-router-migration.mdx](.next-docs/02-pages/02-guides/migrating/app-router-migration.mdx) (0.6KB)
+      - [from-create-react-app.mdx](.next-docs/02-pages/02-guides/migrating/from-create-react-app.mdx) (0.6KB)
+      - [from-vite.mdx](.next-docs/02-pages/02-guides/migrating/from-vite.mdx) (0.5KB)
+      - [index.mdx](.next-docs/02-pages/02-guides/migrating/index.mdx) (0.1KB)
+    - **testing/**:
+      - [cypress.mdx](.next-docs/02-pages/02-guides/testing/cypress.mdx) (0.5KB)
+      - [index.mdx](.next-docs/02-pages/02-guides/testing/index.mdx) (0.5KB)
+      - [jest.mdx](.next-docs/02-pages/02-guides/testing/jest.mdx) (0.5KB)
+      - [playwright.mdx](.next-docs/02-pages/02-guides/testing/playwright.mdx) (0.5KB)
+      - [vitest.mdx](.next-docs/02-pages/02-guides/testing/vitest.mdx) (0.5KB)
+    - **upgrading/**:
+      - [codemods.mdx](.next-docs/02-pages/02-guides/upgrading/codemods.mdx) (0.5KB)
+      - [index.mdx](.next-docs/02-pages/02-guides/upgrading/index.mdx) (0.2KB)
+      - [version-10.mdx](.next-docs/02-pages/02-guides/upgrading/version-10.mdx) (0.6KB)
+      - [version-11.mdx](.next-docs/02-pages/02-guides/upgrading/version-11.mdx) (6.4KB)
+      - [version-12.mdx](.next-docs/02-pages/02-guides/upgrading/version-12.mdx) (7.3KB)
+      - [version-13.mdx](.next-docs/02-pages/02-guides/upgrading/version-13.mdx) (5.2KB)
+      - [version-14.mdx](.next-docs/02-pages/02-guides/upgrading/version-14.mdx) (0.5KB)
+      - [version-9.mdx](.next-docs/02-pages/02-guides/upgrading/version-9.mdx) (6.0KB)
+  - **03-building-your-application/**:
+    - [index.mdx](.next-docs/02-pages/03-building-your-application/index.mdx) (0.1KB)
+    - **01-routing/**:
+      - [01-pages-and-layouts.mdx](.next-docs/02-pages/03-building-your-application/01-routing/01-pages-and-layouts.mdx) (6.7KB)
+      - [02-dynamic-routes.mdx](.next-docs/02-pages/03-building-your-application/01-routing/02-dynamic-routes.mdx) (3.1KB)
+      - [03-linking-and-navigating.mdx](.next-docs/02-pages/03-building-your-application/01-routing/03-linking-and-navigating.mdx) (6.3KB)
+      - [05-custom-app.mdx](.next-docs/02-pages/03-building-your-application/01-routing/05-custom-app.mdx) (3.2KB)
+      - [06-custom-document.mdx](.next-docs/02-pages/03-building-your-application/01-routing/06-custom-document.mdx) (4.7KB)
+      - [07-api-routes.mdx](.next-docs/02-pages/03-building-your-application/01-routing/07-api-routes.mdx) (15.0KB)
+      - [08-custom-error.mdx](.next-docs/02-pages/03-building-your-application/01-routing/08-custom-error.mdx) (3.7KB)
+      - [index.mdx](.next-docs/02-pages/03-building-your-application/01-routing/index.mdx) (0.3KB)
+    - **02-rendering/**:
+      - [01-server-side-rendering.mdx](.next-docs/02-pages/03-building-your-application/02-rendering/01-server-side-rendering.mdx) (1.3KB)
+      - [02-static-site-generation.mdx](.next-docs/02-pages/03-building-your-application/02-rendering/02-static-site-generation.mdx) (10.1KB)
+      - [04-automatic-static-optimization.mdx](.next-docs/02-pages/03-building-your-application/02-rendering/04-automatic-static-optimization.mdx) (3.7KB)
+      - [05-client-side-rendering.mdx](.next-docs/02-pages/03-building-your-application/02-rendering/05-client-side-rendering.mdx) (3.9KB)
+      - [index.mdx](.next-docs/02-pages/03-building-your-application/02-rendering/index.mdx) (1.7KB)
+    - **03-data-fetching/**:
+      - [01-get-static-props.mdx](.next-docs/02-pages/03-building-your-application/03-data-fetching/01-get-static-props.mdx) (9.2KB)
+      - [02-get-static-paths.mdx](.next-docs/02-pages/03-building-your-application/03-data-fetching/02-get-static-paths.mdx) (5.1KB)
+      - [03-forms-and-mutations.mdx](.next-docs/02-pages/03-building-your-application/03-data-fetching/03-forms-and-mutations.mdx) (3.6KB)
+      - [03-get-server-side-props.mdx](.next-docs/02-pages/03-building-your-application/03-data-fetching/03-get-server-side-props.mdx) (4.9KB)
+      - [05-client-side.mdx](.next-docs/02-pages/03-building-your-application/03-data-fetching/05-client-side.mdx) (2.6KB)
+      - [index.mdx](.next-docs/02-pages/03-building-your-application/03-data-fetching/index.mdx) (4.3KB)
+    - **06-configuring/**:
+      - [12-error-handling.mdx](.next-docs/02-pages/03-building-your-application/06-configuring/12-error-handling.mdx) (4.1KB)
+      - [index.mdx](.next-docs/02-pages/03-building-your-application/06-configuring/index.mdx) (0.3KB)
+  - **04-api-reference/**:
+    - [06-edge.mdx](.next-docs/02-pages/04-api-reference/06-edge.mdx) (0.4KB)
+    - [08-turbopack.mdx](.next-docs/02-pages/04-api-reference/08-turbopack.mdx) (0.2KB)
+    - [index.mdx](.next-docs/02-pages/04-api-reference/index.mdx) (0.1KB)
+    - **01-components/**:
+      - [font.mdx](.next-docs/02-pages/04-api-reference/01-components/font.mdx) (0.5KB)
+      - [form.mdx](.next-docs/02-pages/04-api-reference/01-components/form.mdx) (0.5KB)
+      - [head.mdx](.next-docs/02-pages/04-api-reference/01-components/head.mdx) (2.1KB)
+      - [image-legacy.mdx](.next-docs/02-pages/04-api-reference/01-components/image-legacy.mdx) (30.3KB)
+      - [image.mdx](.next-docs/02-pages/04-api-reference/01-components/image.mdx) (0.5KB)
+      - [index.mdx](.next-docs/02-pages/04-api-reference/01-components/index.mdx) (0.5KB)
+      - [link.mdx](.next-docs/02-pages/04-api-reference/01-components/link.mdx) (0.4KB)
+      - [script.mdx](.next-docs/02-pages/04-api-reference/01-components/script.mdx) (0.5KB)
+    - **02-file-conventions/**:
+      - [index.mdx](.next-docs/02-pages/04-api-reference/02-file-conventions/index.mdx) (0.1KB)
+      - [instrumentation.mdx](.next-docs/02-pages/04-api-reference/02-file-conventions/instrumentation.mdx) (0.5KB)
+      - [middleware.mdx](.next-docs/02-pages/04-api-reference/02-file-conventions/middleware.mdx) (0.5KB)
+      - [public-folder.mdx](.next-docs/02-pages/04-api-reference/02-file-conventions/public-folder.mdx) (0.5KB)
+      - [src-folder.mdx](.next-docs/02-pages/04-api-reference/02-file-conventions/src-folder.mdx) (0.5KB)
+    - **03-functions/**:
+      - [get-initial-props.mdx](.next-docs/02-pages/04-api-reference/03-functions/get-initial-props.mdx) (3.7KB)
+      - [get-server-side-props.mdx](.next-docs/02-pages/04-api-reference/03-functions/get-server-side-props.mdx) (7.4KB)
+      - [get-static-paths.mdx](.next-docs/02-pages/04-api-reference/03-functions/get-static-paths.mdx) (12.3KB)
+      - [get-static-props.mdx](.next-docs/02-pages/04-api-reference/03-functions/get-static-props.mdx) (12.6KB)
+      - [index.mdx](.next-docs/02-pages/04-api-reference/03-functions/index.mdx) (0.4KB)
+      - [next-request.mdx](.next-docs/02-pages/04-api-reference/03-functions/next-request.mdx) (0.4KB)
+      - [next-response.mdx](.next-docs/02-pages/04-api-reference/03-functions/next-response.mdx) (0.4KB)
+      - [use-amp.mdx](.next-docs/02-pages/04-api-reference/03-functions/use-amp.mdx) (2.4KB)
+      - [use-report-web-vitals.mdx](.next-docs/02-pages/04-api-reference/03-functions/use-report-web-vitals.mdx) (0.4KB)
+      - [use-router.mdx](.next-docs/02-pages/04-api-reference/03-functions/use-router.mdx) (20.0KB)
+      - [userAgent.mdx](.next-docs/02-pages/04-api-reference/03-functions/userAgent.mdx) (0.5KB)
+    - **04-config/**:
+      - [01-typescript.mdx](.next-docs/02-pages/04-api-reference/04-config/01-typescript.mdx) (0.5KB)
+      - [02-eslint.mdx](.next-docs/02-pages/04-api-reference/04-config/02-eslint.mdx) (0.5KB)
+      - [index.mdx](.next-docs/02-pages/04-api-reference/04-config/index.mdx) (0.1KB)
+      - **01-next-config-js/**:
+        - [allowedDevOrigins.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/allowedDevOrigins.mdx) (0.5KB)
+        - [assetPrefix.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/assetPrefix.mdx) (0.5KB)
+        - [basePath.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/basePath.mdx) (0.5KB)
+        - [bundlePagesRouterDependencies.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/bundlePagesRouterDependencies.mdx) (1.0KB)
+        - [compress.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/compress.mdx) (0.6KB)
+        - [crossOrigin.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/crossOrigin.mdx) (0.5KB)
+        - [devIndicators.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/devIndicators.mdx) (0.5KB)
+        - [distDir.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/distDir.mdx) (0.5KB)
+        - [env.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/env.mdx) (0.5KB)
+        - [eslint.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/eslint.mdx) (0.5KB)
+        - [exportPathMap.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/exportPathMap.mdx) (0.5KB)
+        - [generateBuildId.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/generateBuildId.mdx) (0.5KB)
+        - [generateEtags.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/generateEtags.mdx) (0.5KB)
+        - [headers.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/headers.mdx) (0.5KB)
+        - [httpAgentOptions.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/httpAgentOptions.mdx) (0.5KB)
+        - [images.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/images.mdx) (0.5KB)
+        - [index.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/index.mdx) (0.5KB)
+        - [middlewareClientMaxBodySize.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/middlewareClientMaxBodySize.mdx) (0.5KB)
+        - [onDemandEntries.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/onDemandEntries.mdx) (0.5KB)
+        - [optimizePackageImports.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/optimizePackageImports.mdx) (0.5KB)
+        - [output.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/output.mdx) (0.5KB)
+        - [pageExtensions.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/pageExtensions.mdx) (0.5KB)
+        - [poweredByHeader.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/poweredByHeader.mdx) (0.5KB)
+        - [productionBrowserSourceMaps.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/productionBrowserSourceMaps.mdx) (0.5KB)
+        - [reactStrictMode.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/reactStrictMode.mdx) (0.5KB)
+        - [redirects.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/redirects.mdx) (0.4KB)
+        - [rewrites.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/rewrites.mdx) (0.4KB)
+        - [runtime-configuration.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/runtime-configuration.mdx) (2.5KB)
+        - [serverExternalPackages.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/serverExternalPackages.mdx) (2.0KB)
+        - [trailingSlash.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/trailingSlash.mdx) (0.5KB)
+        - [transpilePackages.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/transpilePackages.mdx) (0.6KB)
+        - [turbo.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/turbo.mdx) (0.5KB)
+        - [typescript.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/typescript.mdx) (0.5KB)
+        - [urlImports.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/urlImports.mdx) (0.5KB)
+        - [useLightningcss.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/useLightningcss.mdx) (0.5KB)
+        - [webpack.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/webpack.mdx) (0.5KB)
+        - [webVitalsAttribution.mdx](.next-docs/02-pages/04-api-reference/04-config/01-next-config-js/webVitalsAttribution.mdx) (0.5KB)
+    - **05-cli/**:
+      - [create-next-app.mdx](.next-docs/02-pages/04-api-reference/05-cli/create-next-app.mdx) (0.5KB)
+      - [index.mdx](.next-docs/02-pages/04-api-reference/05-cli/index.mdx) (0.4KB)
+      - [next.mdx](.next-docs/02-pages/04-api-reference/05-cli/next.mdx) (0.5KB)
+- **03-architecture/**:
+  - [accessibility.mdx](.next-docs/03-architecture/accessibility.mdx) (2.8KB)
+  - [fast-refresh.mdx](.next-docs/03-architecture/fast-refresh.mdx) (5.6KB)
+  - [index.mdx](.next-docs/03-architecture/index.mdx) (0.1KB)
+  - [nextjs-compiler.mdx](.next-docs/03-architecture/nextjs-compiler.mdx) (14.2KB)
+  - [supported-browsers.mdx](.next-docs/03-architecture/supported-browsers.mdx) (2.9KB)
+- **04-community/**:
+  - [01-contribution-guide.mdx](.next-docs/04-community/01-contribution-guide.mdx) (18.5KB)
+  - [02-rspack.mdx](.next-docs/04-community/02-rspack.mdx) (0.6KB)
+  - [index.mdx](.next-docs/04-community/index.mdx) (1.7KB)
+
+**Usage**: Reference these files when answering Next.js-related questions. The files contain comprehensive documentation for Next.js features, APIs, and best practices.
+
+**Last Updated**: 2026-02-12T14:16:21.823Z
+
+<!-- NEXTJS-DOCS-END -->
