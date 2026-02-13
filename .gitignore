@@ -21,3 +21,8 @@ node_modules/
 /playwright/.cache/
 
 .pnpm-store
+# Payload CMS documentation for AI agents
+.payload-docs/
+
+# Next.js documentation for AI agents
+.next-docs/
