@@ -225,6 +225,12 @@ class AgentsMD {
 
     // Checkout
     await this.execCommand('git', ['checkout', 'FETCH_HEAD'], { cwd: docsPath })
+
+    // Remove .git folder to avoid submodule issues
+    const gitDir = join(docsPath, '.git')
+    if (existsSync(gitDir)) {
+      await this.execCommand('rm', ['-rf', gitDir])
+    }
   }
 
   async generateNextIndex() {
