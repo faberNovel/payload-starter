@@ -30,6 +30,7 @@ export default buildConfig({
     },
     importMap: {
       baseDir: path.resolve(dirname),
+      autoGenerate: false, // Désactive la génération automatique
     },
     user: Users.slug,
     livePreview: {
@@ -61,6 +62,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
+    push: process.env.NODE_ENV !== 'production',
   }),
   collections: [Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
