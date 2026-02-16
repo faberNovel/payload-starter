@@ -13,8 +13,9 @@ import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
-import './globals.css'
+import { HeroCarousel } from '@/components/HeroCarousel'
 import { getServerSideURL } from '@/utilities/getURL'
+import './globals.css'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
@@ -35,7 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
 
           <Header />
-          {children}
+          <HeroCarousel />
           <Footer />
         </Providers>
       </body>
