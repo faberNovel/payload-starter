@@ -1,4 +1,4 @@
-import type { GlobalConfig } from 'payload'
+import type { Field, GlobalConfig } from 'payload'
 
 import { link } from '@/fields/link'
 import { revalidateHeader } from './hooks/revalidateHeader'
@@ -76,22 +76,22 @@ export const Header: GlobalConfig = {
                 description: 'Choose if this is a subcategory with pages or a direct link',
               },
             },
-            {
-              ...(link({
+            ({
+              ...link({
                 appearances: false,
                 disableLabel: true,
-              }) as any),
+              }),
               admin: {
-                condition: (data, siblingData) => siblingData?.type === 'link',
+                condition: (_data: Record<string, unknown>, siblingData: Record<string, unknown>) => siblingData?.type === 'link',
                 description: 'Link URL (only for direct links)',
               },
-            },
+            } as unknown as Field),
             {
               name: 'subSubs',
               label: 'Sub-subcategories',
               type: 'array',
               admin: {
-                condition: (data, siblingData) => siblingData?.type === 'subcategory',
+                condition: (_data: Record<string, unknown>, siblingData: Record<string, unknown>) => siblingData?.type === 'subcategory',
                 description: 'Sub-subcategories with their own pages',
               },
               fields: [
@@ -148,7 +148,7 @@ export const Header: GlobalConfig = {
               label: 'Pages',
               type: 'array',
               admin: {
-                condition: (data, siblingData) => siblingData?.type === 'subcategory',
+                condition: (_data: Record<string, unknown>, siblingData: Record<string, unknown>) => siblingData?.type === 'subcategory',
                 description: 'Pages and nested subcategories',
               },
               fields: [
@@ -172,21 +172,21 @@ export const Header: GlobalConfig = {
                     },
                   ],
                 },
-                {
-                  ...(link({
+                ({
+                  ...link({
                     appearances: false,
                     disableLabel: true,
-                  }) as any),
+                  }),
                   admin: {
-                    condition: (data, siblingData) => siblingData?.type === 'page',
+                    condition: (_data: Record<string, unknown>, siblingData: Record<string, unknown>) => siblingData?.type === 'page',
                   },
-                },
+                } as unknown as Field),
                 {
                   name: 'tags',
                   label: 'Badges',
                   type: 'array',
                   admin: {
-                    condition: (data, siblingData) => siblingData?.type === 'page',
+                    condition: (_data: Record<string, unknown>, siblingData: Record<string, unknown>) => siblingData?.type === 'page',
                     description: 'Optional badges (e.g., "BAC+3", "Alternance")',
                   },
                   fields: [
@@ -212,7 +212,7 @@ export const Header: GlobalConfig = {
                   label: 'Nested Pages',
                   type: 'array',
                   admin: {
-                    condition: (data, siblingData) => siblingData?.type === 'nested',
+                    condition: (_data: Record<string, unknown>, siblingData: Record<string, unknown>) => siblingData?.type === 'nested',
                     description: 'Pages within this nested subcategory',
                   },
                   fields: [

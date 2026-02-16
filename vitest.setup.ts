@@ -2,3 +2,7 @@
 
 // Load .env files
 import 'dotenv/config'
+
+// Import jest-dom matchers for better assertions
+import '@testing-library/jest-dom/vitest'
+

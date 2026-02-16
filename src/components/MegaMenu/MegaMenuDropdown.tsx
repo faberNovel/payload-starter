@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { CMSLink, type CMSLinkType } from '@/components/Link'
 import './megaMenu.css'
 
 // Types for the mega menu structure
-type Link = Omit<CMSLinkType, 'children' | 'appearance' | 'className' | 'size' | 'onClick'>
+type Link = Omit<CMSLinkType, 'children' | 'appearance' | 'className' | 'size' | 'onClick' | 'role'>
 
 type Badge = {
   text: string
@@ -62,6 +62,104 @@ export const MegaMenuDropdown: React.FC<MegaMenuDropdownProps> = ({
   const [activeSub, setActiveSub] = useState<number>(0)
   const [activeSubSub, setActiveSubSub] = useState<number>(0)
   const [activeNested, setActiveNested] = useState<number | null>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+  const sidebarRef = useRef<HTMLUListElement>(null)
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    if (!isOpen) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const subs = category.subs
+      if (!subs) return
+
+      const currentSub = subs[activeSub]
+      const hasSubSubs = currentSub?.type === 'subcategory' && currentSub.subSubs && currentSub.subSubs.length > 0
+      const hasNested = currentSub?.type === 'subcategory' && currentSub.items?.some((item) => item.type === 'nested')
+
+      switch (e.key) {
+        case 'Escape':
+          e.preventDefault()
+          onCloseAction()
+          break
+
+        case 'ArrowUp':
+          e.preventDefault()
+          if (activeSub > 0) {
+            setActiveSub(activeSub - 1)
+            setActiveSubSub(0)
+            setActiveNested(null)
+          }
+          break
+
+        case 'ArrowDown':
+          e.preventDefault()
+          if (activeSub < subs.length - 1) {
+            setActiveSub(activeSub + 1)
+            setActiveSubSub(0)
+            setActiveNested(null)
+          }
+          break
+
+        case 'ArrowRight':
+          e.preventDefault()
+          if (hasSubSubs && currentSub.subSubs) {
+            if (activeSubSub < currentSub.subSubs.length - 1) {
+              setActiveSubSub(activeSubSub + 1)
+            }
+          } else if (hasNested && currentSub.items) {
+            const nestedItems = currentSub.items.filter((item) => item.type === 'nested')
+            if (nestedItems.length > 0) {
+              const currentNestedIndex = activeNested ?? -1
+              const allIndices = currentSub.items
+                .map((item, idx) => item.type === 'nested' ? idx : -1)
+                .filter(idx => idx !== -1)
+              const currentPos = allIndices.indexOf(currentNestedIndex)
+              if (currentPos < allIndices.length - 1) {
+                setActiveNested(allIndices[currentPos + 1])
+              }
+            }
+          }
+          break
+
+        case 'ArrowLeft':
+          e.preventDefault()
+          if (hasSubSubs && activeSubSub > 0) {
+            setActiveSubSub(activeSubSub - 1)
+          } else if (hasNested && activeNested !== null) {
+            const allIndices = currentSub.items!
+              .map((item, idx) => item.type === 'nested' ? idx : -1)
+              .filter(idx => idx !== -1)
+            const currentPos = allIndices.indexOf(activeNested)
+            if (currentPos > 0) {
+              setActiveNested(allIndices[currentPos - 1])
+            }
+          }
+          break
+
+        case 'Tab':
+          // Allow default tab behavior for accessibility
+          break
+
+        default:
+          break
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen, activeSub, activeSubSub, activeNested, category.subs, onCloseAction])
+
+  // Focus management
+  useEffect(() => {
+    if (isOpen && dropdownRef.current) {
+      // Focus the dropdown when it opens
+      const firstFocusable = dropdownRef.current.querySelector<HTMLElement>(
+        'button, a, [tabindex]:not([tabindex=\"-1\"])'
+      )
+      firstFocusable?.focus()
+    }
+  }, [isOpen])
 
   if (!isOpen || !category.subs || category.subs.length === 0) {
     return null
@@ -76,23 +174,39 @@ export const MegaMenuDropdown: React.FC<MegaMenuDropdownProps> = ({
   return (
     <>
       {/* Overlay to close dropdown when clicking outside */}
-      <div className="mega-menu-overlay" onClick={onCloseAction} />
+      <div 
+        className="mega-menu-overlay" 
+        onClick={onCloseAction}
+        aria-hidden="true"
+      />
 
       {/* Dropdown panel */}
-      <div className="mega-menu-dropdown">
+      <div 
+        className="mega-menu-dropdown"
+        ref={dropdownRef}
+        role="dialog"
+        aria-label={`${category.label} menu`}
+        aria-modal="true"
+      >
         <div className="mega-menu-container">
           {/* Left sidebar - 30% */}
           <div className="mega-menu-sidebar">
-            <nav>
-              <ul className="mega-menu-sidebar-list">
+            <nav aria-label="Main categories">
+              <ul 
+                className="mega-menu-sidebar-list"
+                ref={sidebarRef}
+                role="menu"
+                aria-orientation="vertical"
+              >
                 {category.subs.map((sub, index) => (
-                  <li key={index}>
+                  <li key={index} role="none">
                     {sub.type === 'link' ? (
                       // Direct link - no submenu
                       <CMSLink
                         {...sub.link}
                         className="mega-menu-sidebar-item"
                         onClick={onCloseAction}
+                        role="menuitem"
                       >
                         {sub.label}
                       </CMSLink>
@@ -110,6 +224,10 @@ export const MegaMenuDropdown: React.FC<MegaMenuDropdownProps> = ({
                           setActiveNested(null)
                           setActiveSubSub(0)
                         }}
+                        role="menuitem"
+                        aria-haspopup="true"
+                        aria-expanded={activeSub === index}
+                        aria-current={activeSub === index ? 'true' : undefined}
                       >
                         {sub.label}
                         <svg
@@ -146,13 +264,22 @@ export const MegaMenuDropdown: React.FC<MegaMenuDropdownProps> = ({
                   <div className="mega-menu-nested-layout">
                     {/* Middle column: Sub-subcategories */}
                     <div className="mega-menu-nested-sidebar">
-                      <ul className="mega-menu-nested-list">
+                      <ul 
+                        className="mega-menu-nested-list"
+                        role="menu"
+                        aria-label="Subcategories"
+                        aria-orientation="vertical"
+                      >
                         {currentSub.subSubs.map((subSub, subSubIndex) => (
-                          <li key={subSubIndex}>
+                          <li key={subSubIndex} role="none">
                             <button
                               className={`mega-menu-nested-item ${activeSubSub === subSubIndex ? 'active' : ''}`}
                               onClick={() => setActiveSubSub(subSubIndex)}
                               onMouseEnter={() => setActiveSubSub(subSubIndex)}
+                              role="menuitem"
+                              aria-haspopup="true"
+                              aria-expanded={activeSubSub === subSubIndex}
+                              aria-current={activeSubSub === subSubIndex ? 'true' : undefined}
                             >
                               {subSub.label}
                               <svg
@@ -180,13 +307,18 @@ export const MegaMenuDropdown: React.FC<MegaMenuDropdownProps> = ({
                     {/* Right column: Pages from active sub-subcategory */}
                     <div className="mega-menu-nested-content">
                       {currentSub.subSubs[activeSubSub]?.items && (
-                        <ul className="mega-menu-page-list">
+                        <ul 
+                          className="mega-menu-page-list"
+                          role="menu"
+                          aria-label={`${currentSub.subSubs[activeSubSub].label} pages`}
+                        >
                           {currentSub.subSubs[activeSubSub].items.map((page, pageIndex) => (
-                            <li key={pageIndex} className="mega-menu-page-item">
+                            <li key={pageIndex} className="mega-menu-page-item" role="none">
                               <CMSLink
                                 {...page.link}
                                 className="mega-menu-page-link"
                                 onClick={onCloseAction}
+                                role="menuitem"
                               >
                                 <span className="mega-menu-page-label">{page.label}</span>
                                 {page.tags && page.tags.length > 0 && (
@@ -213,15 +345,24 @@ export const MegaMenuDropdown: React.FC<MegaMenuDropdownProps> = ({
                   <div className="mega-menu-nested-layout">
                     {/* Middle column: Nested subcategories */}
                     <div className="mega-menu-nested-sidebar">
-                      <ul className="mega-menu-nested-list">
+                      <ul 
+                        className="mega-menu-nested-list"
+                        role="menu"
+                        aria-label="Nested categories"
+                        aria-orientation="vertical"
+                      >
                         {currentSub.items.map((item, itemIndex) => {
                           if (item.type === 'nested' && item.nestedItems) {
                             return (
-                              <li key={itemIndex}>
+                              <li key={itemIndex} role="none">
                                 <button
                                   className={`mega-menu-nested-item ${activeNested === itemIndex ? 'active' : ''}`}
                                   onClick={() => setActiveNested(itemIndex)}
                                   onMouseEnter={() => setActiveNested(itemIndex)}
+                                  role="menuitem"
+                                  aria-haspopup="true"
+                                  aria-expanded={activeNested === itemIndex}
+                                  aria-current={activeNested === itemIndex ? 'true' : undefined}
                                 >
                                   {item.label}
                                   <svg
@@ -245,11 +386,12 @@ export const MegaMenuDropdown: React.FC<MegaMenuDropdownProps> = ({
                             )
                           } else if (item.type === 'page' && item.link) {
                             return (
-                              <li key={itemIndex}>
+                              <li key={itemIndex} role="none">
                                 <CMSLink
                                   {...item.link}
                                   className="mega-menu-nested-item"
                                   onClick={onCloseAction}
+                                  role="menuitem"
                                 >
                                   <span>{item.label}</span>
                                   {item.tags && item.tags.length > 0 && (
@@ -278,14 +420,19 @@ export const MegaMenuDropdown: React.FC<MegaMenuDropdownProps> = ({
                       {activeNested !== null &&
                         currentSub.items[activeNested]?.type === 'nested' &&
                         currentSub.items[activeNested].nestedItems && (
-                          <ul className="mega-menu-page-list">
+                          <ul 
+                            className="mega-menu-page-list"
+                            role="menu"
+                            aria-label={`${currentSub.items[activeNested].label} items`}
+                          >
                             {currentSub.items[activeNested].nestedItems!.map(
                               (nestedPage, nestedIndex) => (
-                                <li key={nestedIndex} className="mega-menu-page-item">
+                                <li key={nestedIndex} className="mega-menu-page-item" role="none">
                                   <CMSLink
                                     {...nestedPage.link}
                                     className="mega-menu-page-link"
                                     onClick={onCloseAction}
+                                    role="menuitem"
                                   >
                                     <span className="mega-menu-page-label">
                                       {nestedPage.label}
@@ -312,16 +459,21 @@ export const MegaMenuDropdown: React.FC<MegaMenuDropdownProps> = ({
                   </div>
                 ) : (
                   // Simple grid for pages without nested subcategories or sub-subcategories
-                  <div className="mega-menu-grid">
+                  <div 
+                    className="mega-menu-grid"
+                    role="menu"
+                    aria-label={`${currentSub.label} pages`}
+                  >
                     {currentSub.items &&
                       currentSub.items.map((item, itemIndex) => {
                         if (item.type === 'page' && item.link) {
                           return (
-                          <div key={itemIndex} className="mega-menu-page-item">
+                          <div key={itemIndex} className="mega-menu-page-item" role="none">
                             <CMSLink
                               {...item.link}
                               className="mega-menu-page-link"
                               onClick={onCloseAction}
+                              role="menuitem"
                             >
                               <span className="mega-menu-page-label">{item.label}</span>
                               {item.tags && item.tags.length > 0 && (

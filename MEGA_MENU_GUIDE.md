@@ -180,41 +180,43 @@ This allows you to switch modes without code changes.
 
 ### Simple Example: 2 Categories
 
-**Category 1: "Programs"**
+#### Category 1: "Programs"
 
-```
+```md
 Label: Programs
 Subs:
-  - Label: Bachelor Programs
-    Type: Subcategory
-    Items:
-      - Label: Business Administration
-        Type: Page
-        Link: /programs/business
-        Tags:
-          - Text: BAC+3
-            Style: Primary
-      - Label: International Management
-        Type: Page
-        Link: /programs/international
-        Tags:
-          - Text: BAC+4
-            Style: Primary
-          - Text: English
-            Style: Secondary
+
+- Label: Bachelor Programs
+  Type: Subcategory
+  Items:
+  - Label: Business Administration
+    Type: Page
+    Link: /programs/business
+    Tags:
+    - Text: BAC+3
+      Style: Primary
+  - Label: International Management
+    Type: Page
+    Link: /programs/international
+    Tags:
+    - Text: BAC+4
+      Style: Primary
+    - Text: English
+      Style: Secondary
 ```
 
-**Category 2: "Admissions"**
+#### Category 2: "Admissions"
 
-```
+```md
 Label: Admissions
 Subs:
-  - Label: How to Apply
-    Type: Direct Link
-    Link: /admissions/apply
-  - Label: Requirements
-    Type: Direct Link
-    Link: /admissions/requirements
+
+- Label: How to Apply
+  Type: Direct Link
+  Link: /admissions/apply
+- Label: Requirements
+  Type: Direct Link
+  Link: /admissions/requirements
 ```
 
 ## Troubleshooting
