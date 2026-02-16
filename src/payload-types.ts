@@ -1654,6 +1654,154 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Define navigation categories with dropdown mega menu. Leave empty to use standard navigation.
+   */
+  navCategories?:
+    | {
+        /**
+         * Category name (e.g., "Formations", "Admission")
+         */
+        label: string;
+        /**
+         * Subcategories and direct pages for this category
+         */
+        subs?:
+          | {
+              /**
+               * Subcategory name (e.g., "Domaines de formation")
+               */
+              label: string;
+              /**
+               * Choose if this is a subcategory with pages or a direct link
+               */
+              type?: ('subcategory' | 'link') | null;
+              /**
+               * Link URL (only for direct links)
+               */
+              link?: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: number | Post;
+                    } | null);
+                url?: string | null;
+              };
+              /**
+               * Sub-subcategories with their own pages
+               */
+              subSubs?:
+                | {
+                    /**
+                     * Sub-subcategory name
+                     */
+                    label: string;
+                    items?:
+                      | {
+                          label: string;
+                          link?: {
+                            type?: ('reference' | 'custom') | null;
+                            newTab?: boolean | null;
+                            reference?:
+                              | ({
+                                  relationTo: 'pages';
+                                  value: number | Page;
+                                } | null)
+                              | ({
+                                  relationTo: 'posts';
+                                  value: number | Post;
+                                } | null);
+                            url?: string | null;
+                          };
+                          tags?:
+                            | {
+                                text: string;
+                                style?: ('default' | 'primary' | 'secondary') | null;
+                                id?: string | null;
+                              }[]
+                            | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              /**
+               * Pages and nested subcategories
+               */
+              items?:
+                | {
+                    label: string;
+                    type?: ('page' | 'nested') | null;
+                    link?: {
+                      type?: ('reference' | 'custom') | null;
+                      newTab?: boolean | null;
+                      reference?:
+                        | ({
+                            relationTo: 'pages';
+                            value: number | Page;
+                          } | null)
+                        | ({
+                            relationTo: 'posts';
+                            value: number | Post;
+                          } | null);
+                      url?: string | null;
+                    };
+                    /**
+                     * Optional badges (e.g., "BAC+3", "Alternance")
+                     */
+                    tags?:
+                      | {
+                          text: string;
+                          style?: ('default' | 'primary' | 'secondary') | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    /**
+                     * Pages within this nested subcategory
+                     */
+                    nestedItems?:
+                      | {
+                          label: string;
+                          link?: {
+                            type?: ('reference' | 'custom') | null;
+                            newTab?: boolean | null;
+                            reference?:
+                              | ({
+                                  relationTo: 'pages';
+                                  value: number | Page;
+                                } | null)
+                              | ({
+                                  relationTo: 'posts';
+                                  value: number | Post;
+                                } | null);
+                            url?: string | null;
+                          };
+                          tags?:
+                            | {
+                                text: string;
+                                style?: ('default' | 'primary' | 'secondary') | null;
+                                id?: string | null;
+                              }[]
+                            | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1702,6 +1850,97 @@ export interface HeaderSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+            };
+        id?: T;
+      };
+  navCategories?:
+    | T
+    | {
+        label?: T;
+        subs?:
+          | T
+          | {
+              label?: T;
+              type?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                  };
+              subSubs?:
+                | T
+                | {
+                    label?: T;
+                    items?:
+                      | T
+                      | {
+                          label?: T;
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                reference?: T;
+                                url?: T;
+                              };
+                          tags?:
+                            | T
+                            | {
+                                text?: T;
+                                style?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              items?:
+                | T
+                | {
+                    label?: T;
+                    type?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                        };
+                    tags?:
+                      | T
+                      | {
+                          text?: T;
+                          style?: T;
+                          id?: T;
+                        };
+                    nestedItems?:
+                      | T
+                      | {
+                          label?: T;
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                reference?: T;
+                                url?: T;
+                              };
+                          tags?:
+                            | T
+                            | {
+                                text?: T;
+                                style?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
             };
         id?: T;
       };
