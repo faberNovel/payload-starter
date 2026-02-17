@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import './theme.css';
 
 @config '../../../tailwind.config.mjs';
 
@@ -87,80 +88,139 @@
 }
 
 :root {
+  /* === EY THEME === */
+  /* Primary colors extracted from the ey Business School website */
+
+  /* Main background - White */
   --background: oklch(100% 0 0deg);
-  --foreground: oklch(14.5% 0 0deg);
-  --card: oklch(96.5% 0.005 265deg);
-  --card-foreground: oklch(14.5% 0 0deg);
+
+  /* Main text - Ey anthracite gray (#333539) */
+  --foreground: oklch(24% 0.005 265deg);
+
+  /* Cards - Very light gray */
+  --card: oklch(98% 0 0deg);
+  --card-foreground: oklch(24% 0.005 265deg);
+
+  /* Popovers */
   --popover: oklch(100% 0 0deg);
-  --popover-foreground: oklch(14.5% 0 0deg);
-  --primary: oklch(20.5% 0 0deg);
-  --primary-foreground: oklch(98.5% 0 0deg);
-  --secondary: oklch(97% 0 0deg);
-  --secondary-foreground: oklch(20.5% 0 0deg);
-  --muted: oklch(97% 0 0deg);
-  --muted-foreground: oklch(55.6% 0 0deg);
-  --accent: oklch(97% 0 0deg);
-  --accent-foreground: oklch(20.5% 0 0deg);
-  --destructive: oklch(57.7% 0.245 27.325deg);
-  --destructive-foreground: oklch(57.7% 0.245 27.325deg);
-  --border: oklch(92.2% 0 0deg);
-  --input: oklch(92.2% 0 0deg);
-  --ring: oklch(70.8% 0 0deg);
-  --chart-1: oklch(64.6% 0.222 41.116deg);
-  --chart-2: oklch(60% 0.118 184.704deg);
-  --chart-3: oklch(39.8% 0.07 227.392deg);
-  --chart-4: oklch(82.8% 0.189 84.429deg);
-  --chart-5: oklch(76.9% 0.188 70.08deg);
-  --radius: 0.625rem;
-  --sidebar: oklch(98.5% 0 0deg);
-  --sidebar-foreground: oklch(14.5% 0 0deg);
-  --sidebar-primary: oklch(20.5% 0 0deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent: oklch(97% 0 0deg);
-  --sidebar-accent-foreground: oklch(20.5% 0 0deg);
-  --sidebar-border: oklch(92.2% 0 0deg);
-  --sidebar-ring: oklch(70.8% 0 0deg);
-  --success: oklch(78% 0.08 200deg);
-  --warning: oklch(89% 0.1 75deg);
-  --error: oklch(75% 0.15 25deg);
+  --popover-foreground: oklch(24% 0.005 265deg);
+
+  /* Primary color - Ey dark blue (#1A2557) */
+  --primary: oklch(20% 0.08 265deg);
+  --primary-foreground: oklch(100% 0 0deg);
+
+  /* Secondary color - Ey yellow/gold (#E6A83D) */
+  --secondary: oklch(73% 0.15 75deg);
+  --secondary-foreground: oklch(20% 0.08 265deg);
+
+  /* Muted - Light gray */
+  --muted: oklch(96% 0 0deg);
+  --muted-foreground: oklch(55% 0.005 265deg);
+
+  /* Accent - Ey yellow for highlights */
+  --accent: oklch(73% 0.15 75deg);
+  --accent-foreground: oklch(20% 0.08 265deg);
+
+  /* Destructive - Red for errors */
+  --destructive: oklch(62% 0.22 25deg);
+  --destructive-foreground: oklch(100% 0 0deg);
+
+  /* Borders - Ey border gray (#D6D7D7) */
+  --border: oklch(87% 0.002 265deg);
+  --input: oklch(87% 0.002 265deg);
+
+  /* Focus ring - Ey yellow */
+  --ring: oklch(73% 0.15 75deg);
+
+  /* Charts - Ey palette */
+  --chart-1: oklch(73% 0.15 75deg); /* Ey yellow */
+  --chart-2: oklch(20% 0.08 265deg); /* Ey blue */
+  --chart-3: oklch(55% 0.1 50deg); /* Complementary orange */
+  --chart-4: oklch(65% 0.12 200deg); /* Complementary cyan */
+  --chart-5: oklch(45% 0.1 300deg); /* Complementary purple */
+
+  /* Border radius */
+  --radius: 0.5rem;
+
+  /* Sidebar - Ey dark blue */
+  --sidebar: oklch(20% 0.08 265deg);
+  --sidebar-foreground: oklch(100% 0 0deg);
+  --sidebar-primary: oklch(73% 0.15 75deg);
+  --sidebar-primary-foreground: oklch(20% 0.08 265deg);
+  --sidebar-accent: oklch(25% 0.08 265deg);
+  --sidebar-accent-foreground: oklch(100% 0 0deg);
+  --sidebar-border: oklch(30% 0.08 265deg);
+  --sidebar-ring: oklch(73% 0.15 75deg);
+
+  /* States - Success (Ey yellow), Warning, Error */
+  --success: oklch(73% 0.15 75deg);
+  --warning: oklch(75% 0.18 60deg);
+  --error: oklch(62% 0.22 25deg);
 }
 
 [data-theme='dark'] {
-  --background: oklch(14.5% 0 0deg);
-  --foreground: oklch(98.5% 0 0deg);
-  --card: oklch(17% 0 0deg);
-  --card-foreground: oklch(98.5% 0 0deg);
-  --popover: oklch(14.5% 0 0deg);
-  --popover-foreground: oklch(98.5% 0 0deg);
-  --primary: oklch(98.5% 0 0deg);
-  --primary-foreground: oklch(20.5% 0 0deg);
-  --secondary: oklch(26.9% 0 0deg);
-  --secondary-foreground: oklch(98.5% 0 0deg);
-  --muted: oklch(26.9% 0 0deg);
-  --muted-foreground: oklch(70.8% 0 0deg);
-  --accent: oklch(26.9% 0 0deg);
-  --accent-foreground: oklch(98.5% 0 0deg);
-  --destructive: oklch(39.6% 0.141 25.723deg);
-  --destructive-foreground: oklch(63.7% 0.237 25.331deg);
-  --border: oklch(26.9% 0 0deg);
-  --input: oklch(26.9% 0 0deg);
-  --ring: oklch(43.9% 0 0deg);
-  --chart-1: oklch(48.8% 0.243 264.376deg);
-  --chart-2: oklch(69.6% 0.17 162.48deg);
-  --chart-3: oklch(76.9% 0.188 70.08deg);
-  --chart-4: oklch(62.7% 0.265 303.9deg);
-  --chart-5: oklch(64.5% 0.246 16.439deg);
-  --sidebar: oklch(20.5% 0 0deg);
-  --sidebar-foreground: oklch(98.5% 0 0deg);
-  --sidebar-primary: oklch(48.8% 0.243 264.376deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent: oklch(26.9% 0 0deg);
-  --sidebar-accent-foreground: oklch(98.5% 0 0deg);
-  --sidebar-border: oklch(26.9% 0 0deg);
-  --sidebar-ring: oklch(43.9% 0 0deg);
-  --success: oklch(28% 0.1 200deg);
-  --warning: oklch(35% 0.08 70deg);
-  --error: oklch(45% 0.1 25deg);
+  /* === ey DARK MODE === */
+
+  /* Main background - Very dark Ey blue */
+  --background: oklch(15% 0.08 265deg);
+  --foreground: oklch(98% 0 0deg);
+
+  /* Cards - Slightly lighter blue */
+  --card: oklch(18% 0.08 265deg);
+  --card-foreground: oklch(98% 0 0deg);
+
+  /* Popovers */
+  --popover: oklch(15% 0.08 265deg);
+  --popover-foreground: oklch(98% 0 0deg);
+
+  /* Primary color - Ey yellow in dark mode */
+  --primary: oklch(73% 0.15 75deg);
+  --primary-foreground: oklch(20% 0.08 265deg);
+
+  /* Secondary color - Medium blue */
+  --secondary: oklch(30% 0.08 265deg);
+  --secondary-foreground: oklch(98% 0 0deg);
+
+  /* Muted */
+  --muted: oklch(25% 0.08 265deg);
+  --muted-foreground: oklch(70% 0 0deg);
+
+  /* Accent - Ey yellow */
+  --accent: oklch(73% 0.15 75deg);
+  --accent-foreground: oklch(20% 0.08 265deg);
+
+  /* Destructive */
+  --destructive: oklch(50% 0.18 25deg);
+  --destructive-foreground: oklch(98% 0 0deg);
+
+  /* Borders */
+  --border: oklch(25% 0.08 265deg);
+  --input: oklch(25% 0.08 265deg);
+
+  /* Ring */
+  --ring: oklch(73% 0.15 75deg);
+
+  /* Charts */
+  --chart-1: oklch(73% 0.15 75deg);
+  --chart-2: oklch(45% 0.12 265deg);
+  --chart-3: oklch(60% 0.12 50deg);
+  --chart-4: oklch(65% 0.12 200deg);
+  --chart-5: oklch(55% 0.12 300deg);
+
+  /* Sidebar */
+  --sidebar: oklch(18% 0.08 265deg);
+  --sidebar-foreground: oklch(98% 0 0deg);
+  --sidebar-primary: oklch(73% 0.15 75deg);
+  --sidebar-primary-foreground: oklch(20% 0.08 265deg);
+  --sidebar-accent: oklch(25% 0.08 265deg);
+  --sidebar-accent-foreground: oklch(98% 0 0deg);
+  --sidebar-border: oklch(25% 0.08 265deg);
+  --sidebar-ring: oklch(73% 0.15 75deg);
+
+  /* States */
+  --success: oklch(73% 0.15 75deg);
+  --warning: oklch(65% 0.15 60deg);
+  --error: oklch(55% 0.18 25deg);
 }
 
 @theme inline {

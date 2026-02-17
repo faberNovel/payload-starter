@@ -32,6 +32,8 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     user: Users.slug,
+    // Custom Theme EY
+    css: path.resolve(dirname, './app/(payload)/admin/custom.scss'),
     livePreview: {
       breakpoints: [
         {
