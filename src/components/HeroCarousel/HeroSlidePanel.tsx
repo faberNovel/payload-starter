@@ -4,6 +4,7 @@ import React from 'react'
 import type { HeroSlide } from '@/payload-types'
 
 import { Media } from '@/components/Media'
+import RichText from '@/components/RichText'
 
 interface HeroSlidePanelProps {
   slide: HeroSlide
@@ -29,9 +30,9 @@ export const HeroSlidePanel: React.FC<HeroSlidePanelProps> = ({
         </h3>
 
         {slide.content && (
-          <p className="mb-6 text-sm leading-relaxed text-black/80 lg:text-base">
-            {extractPlainText(slide.content)}
-          </p>
+          <div className="mb-6 text-sm leading-relaxed text-black/80 lg:text-base">
+            <RichText data={slide.content} enableGutter={false} />
+          </div>
         )}
 
         {slide.label && slide.url && (
@@ -57,28 +58,4 @@ export const HeroSlidePanel: React.FC<HeroSlidePanelProps> = ({
       </div>
     </div>
   )
-}
-
-/**
- * Extract plain text from a Lexical richText root node.
- * We walk the tree and concatenate all text node values.
- */
-function extractPlainText(richText: HeroSlide['content']): string {
-  if (!richText?.root?.children) return ''
-
-  const texts: string[] = []
-
-  function walk(nodes: any[]) {
-    for (const node of nodes) {
-      if (node.type === 'text' && typeof node.text === 'string') {
-        texts.push(node.text)
-      }
-      if (node.children) {
-        walk(node.children)
-      }
-    }
-  }
-
-  walk(richText.root.children)
-  return texts.join(' ')
 }
