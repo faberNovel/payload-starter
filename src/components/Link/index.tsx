@@ -5,16 +5,18 @@ import React from 'react'
 
 import type { Page, Post } from '@/payload-types'
 
-type CMSLinkType = {
+export type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
   children?: React.ReactNode
   className?: string
   label?: string | null
   newTab?: boolean | null
+  onClick?: () => void
   reference?: {
     relationTo: 'pages' | 'posts'
     value: Page | Post | string | number
   } | null
+  role?: string
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null
   url?: string | null
@@ -28,7 +30,9 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
     className,
     label,
     newTab,
+    onClick,
     reference,
+    role,
     size: sizeFromProps,
     url,
   } = props
@@ -48,7 +52,13 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   /* Ensure we don't break any styles set by richText */
   if (appearance === 'inline') {
     return (
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+      <Link 
+        className={cn(className)} 
+        href={href || url || ''} 
+        onClick={onClick} 
+        role={role}
+        {...newTabProps}
+      >
         {label && label}
         {children && children}
       </Link>
@@ -57,7 +67,13 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
 
   return (
     <Button asChild className={className} size={size} variant={appearance}>
-      <Link className={cn(className)} href={href || url || ''} {...newTabProps}>
+      <Link 
+        className={cn(className)} 
+        href={href || url || ''} 
+        onClick={onClick} 
+        role={role}
+        {...newTabProps}
+      >
         {label && label}
         {children && children}
       </Link>

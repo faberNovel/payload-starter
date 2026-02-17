@@ -1,0 +1,741 @@
+/**
+ * Styles additionnels ey pour le frontend
+ * Applique l'identité visuelle EY
+ */
+
+/* === TYPOGRAPHIE ey === */
+@layer base {
+  body {
+    font-feature-settings:
+      'kern' 1,
+      'liga' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Titres avec emphase ey */
+  h1,
+  h2,
+  h3 {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+  }
+
+  h2 {
+    font-size: clamp(1.875rem, 4vw, 3rem);
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+  }
+}
+
+/* === BOUTONS ey === */
+@layer components {
+  /* Bouton primaire - Jaune ey */
+  .btn-primary-ey {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px oklch(73% 0.15 75deg / 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary-ey:hover {
+    background-color: oklch(68% 0.17 75deg);
+    box-shadow: 0 6px 20px oklch(73% 0.15 75deg / 0.3);
+    transform: scale(1.05);
+  }
+
+  /* Bouton secondaire - Bleu ey */
+  .btn-secondary-ey {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-secondary-ey:hover {
+    background-color: oklch(25% 0.08 265deg);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px oklch(20% 0.08 265deg / 0.3);
+  }
+
+  /* Bouton outline */
+  .btn-outline-ey {
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+    background-color: transparent;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .btn-outline-ey:hover {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+}
+
+/* === CARTES ey === */
+@layer components {
+  .card-ey {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px oklch(0% 0 0deg / 0.05);
+  }
+
+  .card-ey:hover {
+    box-shadow: 0 8px 24px oklch(0% 0 0deg / 0.1);
+    transform: translateY(-2px);
+    border-color: oklch(73% 0.15 75deg);
+  }
+
+  /* Card avec accent jaune */
+  .card-ey-accent {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--color-secondary);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px oklch(0% 0 0deg / 0.05);
+  }
+
+  .card-ey-accent:hover {
+    box-shadow: 0 8px 24px oklch(0% 0 0deg / 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Card avec fond bleu */
+  .card-ey-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border: none;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 40px oklch(0% 0 0deg / 0.15);
+    transition: all 0.3s ease;
+  }
+}
+
+/* === BADGES ey === */
+@layer components {
+  .badge-ey {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+  }
+
+  .badge-ey-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+
+  .badge-ey-outline {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background-color: transparent;
+    border: 2px solid var(--color-secondary);
+    color: var(--color-secondary);
+  }
+}
+
+/* === LIENS ey === */
+@layer base {
+  a {
+    color: var(--color-primary);
+    transition: color 0.2s ease;
+    text-underline-offset: 4px;
+  }
+
+  a:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
+  }
+
+  /* Liens en jaune ey */
+  .link-ey {
+    color: var(--color-secondary);
+    font-weight: 600;
+  }
+
+  .link-ey:hover {
+    color: var(--color-primary);
+  }
+}
+
+/* === SECTIONS AVEC FOND ey === */
+@layer utilities {
+  .section-ey-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-ey-primary {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  .section-ey-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-ey-secondary {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  .section-ey-light {
+    background-color: var(--color-muted);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-ey-light {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+}
+
+/* === INPUTS ey === */
+@layer components {
+  .input-ey {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-input);
+    color: var(--color-foreground);
+    transition: all 0.2s ease;
+  }
+
+  .input-ey::placeholder {
+    color: var(--color-muted-foreground);
+  }
+
+  .input-ey:focus {
+    border-color: var(--color-secondary);
+    outline: none;
+    box-shadow: 0 0 0 4px oklch(73% 0.15 75deg / 0.1);
+  }
+
+  .textarea-ey {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-input);
+    color: var(--color-foreground);
+    transition: all 0.2s ease;
+    resize: none;
+    min-height: 120px;
+  }
+
+  .textarea-ey::placeholder {
+    color: var(--color-muted-foreground);
+  }
+
+  .textarea-ey:focus {
+    border-color: var(--color-secondary);
+    outline: none;
+    box-shadow: 0 0 0 4px oklch(73% 0.15 75deg / 0.1);
+  }
+
+  .select-ey {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-input);
+    color: var(--color-foreground);
+    transition: all 0.2s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23333539' d='M4 6l4 4 4-4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.5rem;
+  }
+
+  .select-ey:focus {
+    border-color: var(--color-secondary);
+    outline: none;
+    box-shadow: 0 0 0 4px oklch(73% 0.15 75deg / 0.1);
+  }
+}
+
+/* === NAVIGATION ey === */
+@layer components {
+  .nav-ey {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    border-bottom: 4px solid var(--color-secondary);
+    box-shadow: 0 10px 15px -3px oklch(0% 0 0deg / 0.1);
+  }
+
+  .nav-link-ey {
+    color: var(--color-primary-foreground);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .nav-link-ey:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+  }
+
+  .nav-link-ey.active {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+  }
+}
+
+/* === FOOTER ey === */
+@layer components {
+  .footer-ey {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    padding: 3rem 0;
+    border-top: 4px solid var(--color-secondary);
+  }
+
+  .footer-ey a {
+    color: var(--color-primary-foreground);
+    transition: color 0.2s ease;
+  }
+
+  .footer-ey a:hover {
+    color: var(--color-secondary);
+  }
+}
+
+/* === ALERTS/NOTIFICATIONS ey === */
+@layer components {
+  .alert-ey {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .alert-success {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--color-success);
+    background-color: oklch(from var(--color-success) l c h / 0.1);
+    color: var(--color-foreground);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .alert-warning {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--color-warning);
+    background-color: oklch(from var(--color-warning) l c h / 0.1);
+    color: var(--color-foreground);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .alert-error {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--color-error);
+    background-color: oklch(from var(--color-error) l c h / 0.1);
+    color: var(--color-foreground);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .alert-info {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--color-primary);
+    background-color: oklch(from var(--color-primary) l c h / 0.1);
+    color: var(--color-foreground);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+/* === GRILLE/LAYOUT ey === */
+@layer utilities {
+  .grid-ey {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    .grid-ey {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-ey {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .grid-ey-2 {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    .grid-ey-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .grid-ey-4 {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    .grid-ey-4 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-ey-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+}
+
+/* === HERO SECTION ey === */
+@layer components {
+  .hero-ey {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-primary),
+      oklch(25% 0.08 265deg)
+    );
+    color: var(--color-primary-foreground);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero-ey {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+  }
+
+  .hero-ey::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      oklch(73% 0.15 75deg) 35px,
+      oklch(73% 0.15 75deg) 70px
+    );
+  }
+
+  .hero-ey-title {
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    font-weight: 700;
+    position: relative;
+    z-index: 10;
+    text-shadow: 0 2px 10px oklch(0% 0 0deg / 0.3);
+  }
+
+  .hero-ey-accent {
+    color: var(--color-secondary);
+  }
+}
+
+/* === DIVIDERS ey === */
+@layer components {
+  .divider-ey {
+    height: 0.25rem;
+    width: 6rem;
+    background-color: var(--color-secondary);
+    border-radius: 9999px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .divider-ey-full {
+    height: 0.125rem;
+    width: 100%;
+    background-color: var(--color-border);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .divider-ey-gradient {
+    height: 0.25rem;
+    width: 100%;
+    border-radius: 9999px;
+    background: linear-gradient(to right, transparent, oklch(73% 0.15 75deg), transparent);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+}
+
+/* === ANIMATIONS ey === */
+@layer utilities {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-fade-in-scale {
+    animation: fadeInScale 0.5s ease-out;
+  }
+
+  .stagger-children > * {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .stagger-children > *:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-children > *:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-children > *:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+}
+
+/* === SCROLLBAR ey === */
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(73% 0.15 75deg) oklch(96% 0 0deg);
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: oklch(96% 0 0deg);
+    border-radius: 5px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: oklch(73% 0.15 75deg);
+    border-radius: 5px;
+    transition: background 0.2s ease;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: oklch(68% 0.17 75deg);
+  }
+}
+
+/* === UTILITIES ey === */
+@layer utilities {
+  .text-gradient-ey {
+    background: linear-gradient(135deg, oklch(20% 0.08 265deg), oklch(73% 0.15 75deg));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-ey {
+    box-shadow:
+      0 2px 8px oklch(0% 0 0deg / 0.05),
+      0 0 0 1px oklch(0% 0 0deg / 0.05);
+  }
+
+  .shadow-ey-lg {
+    box-shadow:
+      0 10px 40px oklch(0% 0 0deg / 0.1),
+      0 0 0 1px oklch(0% 0 0deg / 0.05);
+  }
+
+  .shadow-ey-primary {
+    box-shadow: 0 8px 24px oklch(20% 0.08 265deg / 0.15);
+  }
+
+  .shadow-ey-secondary {
+    box-shadow: 0 8px 24px oklch(73% 0.15 75deg / 0.2);
+  }
+}
+
+/* === HOVER EFFECTS ey === */
+@layer utilities {
+  .hover-lift {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .hover-glow {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow:
+      0 0 20px oklch(73% 0.15 75deg / 0.4),
+      0 0 40px oklch(73% 0.15 75deg / 0.2);
+  }
+}
+
+/* === RESPONSIVE CONTAINERS ey === */
+@layer utilities {
+  .container-ey {
+    width: 100%;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .container-ey-narrow {
+    width: 100%;
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .container-ey-wide {
+    width: 100%;
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* === MODE SOMBRE OVERRIDES === */
+@layer base {
+  [data-theme='dark'] {
+    .card-ey {
+      box-shadow: 0 4px 12px oklch(0% 0 0deg / 0.3);
+    }
+
+    .card-ey:hover {
+      box-shadow: 0 8px 24px oklch(0% 0 0deg / 0.4);
+    }
+
+    .shadow-ey {
+      box-shadow:
+        0 2px 8px oklch(0% 0 0deg / 0.2),
+        0 0 0 1px oklch(100% 0 0deg / 0.05);
+    }
+
+    .shadow-ey-lg {
+      box-shadow:
+        0 10px 40px oklch(0% 0 0deg / 0.3),
+        0 0 0 1px oklch(100% 0 0deg / 0.05);
+    }
+  }
+}

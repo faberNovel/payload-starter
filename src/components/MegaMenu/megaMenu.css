@@ -1,0 +1,327 @@
+/* Mega Menu Styles - EY inspired */
+
+/* Overlay to detect clicks outside */
+.mega-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 998;
+}
+
+/* Main dropdown container */
+.mega-menu-dropdown {
+  position: absolute;
+  left: 0;
+  margin: 8px 1rem;
+
+  width: 100%;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Container with max-width */
+.mega-menu-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  min-height: 400px;
+  max-height: 600px;
+}
+
+/* LEFT SIDEBAR - 30% (beige background) */
+.mega-menu-sidebar {
+  width: 30%;
+  background: #f5e6d3;
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.mega-menu-sidebar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mega-menu-sidebar-list li {
+  margin-bottom: 0.5rem;
+}
+
+.mega-menu-sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2c3e50;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mega-menu-sidebar-item:hover,
+.mega-menu-sidebar-item.active {
+  background: rgba(255, 255, 255, 0.7);
+  color: #1a1a1a;
+}
+
+.mega-menu-sidebar-item.active {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.mega-menu-arrow {
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.mega-menu-sidebar-item:hover .mega-menu-arrow {
+  opacity: 1;
+}
+
+/* RIGHT CONTENT AREA - 70% (white background) */
+.mega-menu-content {
+  width: 70%;
+  background: white;
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+}
+
+/* Simple grid layout (no nested subcategories) */
+.mega-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 2rem;
+}
+
+/* Nested layout (with subcategories) */
+.mega-menu-nested-layout {
+  display: flex;
+  gap: 2rem;
+  height: 100%;
+}
+
+.mega-menu-nested-sidebar {
+  flex: 0 0 40%;
+  padding-right: 1.5rem;
+  border-right: 1px solid #e5e7eb;
+}
+
+.mega-menu-nested-content {
+  flex: 1;
+  padding-left: 1.5rem;
+}
+
+.mega-menu-nested-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mega-menu-nested-list li {
+  margin-bottom: 0.5rem;
+}
+
+.mega-menu-nested-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #374151;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mega-menu-nested-item:hover,
+.mega-menu-nested-item.active {
+  background: #f9fafb;
+  color: #1f2937;
+}
+
+.mega-menu-nested-item.active {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+/* Page list */
+.mega-menu-page-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mega-menu-page-item {
+  margin-bottom: 0.75rem;
+}
+
+.mega-menu-page-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #374151;
+  transition: all 0.2s ease;
+}
+
+.mega-menu-page-link:hover {
+  background: #f9fafb;
+  color: #1f2937;
+}
+
+.mega-menu-page-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Badges container */
+.mega-menu-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Badge styles */
+.mega-menu-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.badge-default {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.badge-primary {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge-secondary {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .mega-menu-container {
+    flex-direction: column;
+    max-height: 80vh;
+  }
+
+  .mega-menu-sidebar,
+  .mega-menu-content {
+    width: 100%;
+  }
+
+  .mega-menu-sidebar {
+    max-height: 40vh;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .mega-menu-nested-layout {
+    flex-direction: column;
+  }
+
+  .mega-menu-nested-sidebar {
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .mega-menu-nested-content {
+    padding-left: 0;
+  }
+
+  .mega-menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .mega-menu-sidebar,
+  .mega-menu-content {
+    padding: 1rem;
+  }
+
+  .mega-menu-sidebar-item,
+  .mega-menu-nested-item,
+  .mega-menu-page-link {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .mega-menu-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+/* Scrollbar styling */
+.mega-menu-sidebar::-webkit-scrollbar,
+.mega-menu-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mega-menu-sidebar::-webkit-scrollbar-track,
+.mega-menu-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mega-menu-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.mega-menu-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+.mega-menu-sidebar::-webkit-scrollbar-thumb:hover,
+.mega-menu-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}

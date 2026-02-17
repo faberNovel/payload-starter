@@ -1,32 +1,35 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
 /**
  * Simple object check.
  * @param item
  * @returns {boolean}
  */
-export function isObject(item: unknown): item is object {
-  return typeof item === 'object' && !Array.isArray(item)
+export function isObject(item: unknown): item is Record<string, unknown> {
+  return typeof item === 'object' && item !== null && !Array.isArray(item)
 }
 
 /**
  * Deep merge two objects.
  * @param target
- * @param ...sources
+ * @param source
  */
-export default function deepMerge<T, R>(target: T, source: R): T {
-  const output = { ...target }
+export default function deepMerge<T extends Record<string, unknown>, R extends Record<string, unknown>>(
+  target: T,
+  source: R,
+): T {
+  const output = { ...target } as T
   if (isObject(target) && isObject(source)) {
     Object.keys(source).forEach((key) => {
-      if (isObject(source[key])) {
+      const sourceValue = source[key]
+      const targetValue = target[key]
+      
+      if (isObject(sourceValue)) {
         if (!(key in target)) {
-          Object.assign(output, { [key]: source[key] })
-        } else {
-          output[key] = deepMerge(target[key], source[key])
+          Object.assign(output, { [key]: sourceValue })
+        } else if (isObject(targetValue)) {
+          output[key as keyof T] = deepMerge(targetValue, sourceValue) as T[keyof T]
         }
       } else {
-        Object.assign(output, { [key]: source[key] })
+        Object.assign(output, { [key]: sourceValue })
       }
     })
   }

@@ -108,16 +108,18 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  fallbackLocale: null;
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('en' | 'fr') | ('en' | 'fr')[];
   globals: {
     header: Header;
     footer: Footer;
+    languages: Language;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    languages: LanguagesSelect<false> | LanguagesSelect<true>;
   };
-  locale: null;
+  locale: 'en' | 'fr';
   user: User;
   jobs: {
     tasks: {
@@ -1654,6 +1656,154 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Define navigation categories with dropdown mega menu. Leave empty to use standard navigation.
+   */
+  navCategories?:
+    | {
+        /**
+         * Category name (e.g., "Formations", "Admission")
+         */
+        label: string;
+        /**
+         * Subcategories and direct pages for this category
+         */
+        subs?:
+          | {
+              /**
+               * Subcategory name (e.g., "Domaines de formation")
+               */
+              label: string;
+              /**
+               * Choose if this is a subcategory with pages or a direct link
+               */
+              type?: ('subcategory' | 'link') | null;
+              /**
+               * Link URL (only for direct links)
+               */
+              link?: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: number | Post;
+                    } | null);
+                url?: string | null;
+              };
+              /**
+               * Sub-subcategories with their own pages
+               */
+              subSubs?:
+                | {
+                    /**
+                     * Sub-subcategory name
+                     */
+                    label: string;
+                    items?:
+                      | {
+                          label: string;
+                          link?: {
+                            type?: ('reference' | 'custom') | null;
+                            newTab?: boolean | null;
+                            reference?:
+                              | ({
+                                  relationTo: 'pages';
+                                  value: number | Page;
+                                } | null)
+                              | ({
+                                  relationTo: 'posts';
+                                  value: number | Post;
+                                } | null);
+                            url?: string | null;
+                          };
+                          tags?:
+                            | {
+                                text: string;
+                                style?: ('default' | 'primary' | 'secondary') | null;
+                                id?: string | null;
+                              }[]
+                            | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              /**
+               * Pages and nested subcategories
+               */
+              items?:
+                | {
+                    label: string;
+                    type?: ('page' | 'nested') | null;
+                    link?: {
+                      type?: ('reference' | 'custom') | null;
+                      newTab?: boolean | null;
+                      reference?:
+                        | ({
+                            relationTo: 'pages';
+                            value: number | Page;
+                          } | null)
+                        | ({
+                            relationTo: 'posts';
+                            value: number | Post;
+                          } | null);
+                      url?: string | null;
+                    };
+                    /**
+                     * Optional badges (e.g., "BAC+3", "Alternance")
+                     */
+                    tags?:
+                      | {
+                          text: string;
+                          style?: ('default' | 'primary' | 'secondary') | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    /**
+                     * Pages within this nested subcategory
+                     */
+                    nestedItems?:
+                      | {
+                          label: string;
+                          link?: {
+                            type?: ('reference' | 'custom') | null;
+                            newTab?: boolean | null;
+                            reference?:
+                              | ({
+                                  relationTo: 'pages';
+                                  value: number | Page;
+                                } | null)
+                              | ({
+                                  relationTo: 'posts';
+                                  value: number | Post;
+                                } | null);
+                            url?: string | null;
+                          };
+                          tags?:
+                            | {
+                                text: string;
+                                style?: ('default' | 'primary' | 'secondary') | null;
+                                id?: string | null;
+                              }[]
+                            | null;
+                          id?: string | null;
+                        }[]
+                      | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1688,6 +1838,37 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "languages".
+ */
+export interface Language {
+  id: number;
+  /**
+   * Manage display metadata for each locale. The locale codes must match the ones defined in the Payload config.
+   */
+  languages: {
+    /**
+     * Must match a locale defined in payload.config.ts
+     */
+    code: 'en' | 'fr';
+    /**
+     * Display name shown in the language selector (e.g. "English", "Français")
+     */
+    label: string;
+    /**
+     * Optional flag or icon displayed next to the language name
+     */
+    flag?: (number | null) | Media;
+    /**
+     * Mark one language as the default
+     */
+    isDefault?: boolean | null;
+    id?: string | null;
+  }[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1702,6 +1883,97 @@ export interface HeaderSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+            };
+        id?: T;
+      };
+  navCategories?:
+    | T
+    | {
+        label?: T;
+        subs?:
+          | T
+          | {
+              label?: T;
+              type?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                  };
+              subSubs?:
+                | T
+                | {
+                    label?: T;
+                    items?:
+                      | T
+                      | {
+                          label?: T;
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                reference?: T;
+                                url?: T;
+                              };
+                          tags?:
+                            | T
+                            | {
+                                text?: T;
+                                style?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              items?:
+                | T
+                | {
+                    label?: T;
+                    type?: T;
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                        };
+                    tags?:
+                      | T
+                      | {
+                          text?: T;
+                          style?: T;
+                          id?: T;
+                        };
+                    nestedItems?:
+                      | T
+                      | {
+                          label?: T;
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                reference?: T;
+                                url?: T;
+                              };
+                          tags?:
+                            | T
+                            | {
+                                text?: T;
+                                style?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                        };
+                    id?: T;
+                  };
+              id?: T;
             };
         id?: T;
       };
@@ -1726,6 +1998,24 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "languages_select".
+ */
+export interface LanguagesSelect<T extends boolean = true> {
+  languages?:
+    | T
+    | {
+        code?: T;
+        label?: T;
+        flag?: T;
+        isDefault?: T;
         id?: T;
       };
   updatedAt?: T;

@@ -1,6 +1,17 @@
 {
   "npm.packageManager": "pnpm",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // ESLint performance optimizations
+  "eslint.runtime": "node",
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.codeActionsOnSave.mode": "problems",
+  "eslint.options": {
+    "cache": true,
+    "cacheLocation": ".eslintcache"
+  },
+  "eslint.lintTask.options": "-c eslint.config.mjs --cache --cache-location .eslintcache .",
+
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
@@ -36,5 +47,44 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit"
     }
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.retool_types/**": true,
+    "**/*tsconfig.json": true,
+    ".cache": true,
+    "retool.config.json": true,
+    ".next": true,
+    "node_modules": true,
+    ".eslintcache": true
+  },
+
+  // Additional performance settings
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.next/**": true,
+    "**/.cache/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.payload/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.payload": true,
+    "**/public": true,
+    "**/.cache": true,
+    "**/coverage": true,
+    "**/.eslintcache": true,
+    "**/payload-types.ts": true,
+    "**/importMap.js": true
   }
 }
