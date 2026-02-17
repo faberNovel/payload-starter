@@ -28,7 +28,7 @@ export const CarouselControls: React.FC<CarouselControlsProps> = ({
             aria-label={`Go to slide ${i + 1}`}
             className={cn(
               'h-3 rounded-full transition-all duration-300',
-              i === current ? 'w-8 bg-black/70' : 'w-3 bg-white/80',
+              i === current ? 'w-8 bg-secondary' : 'w-3 bg-white/80',
             )}
           />
         ))}

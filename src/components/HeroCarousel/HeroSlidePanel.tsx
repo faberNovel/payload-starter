@@ -24,23 +24,20 @@ export const HeroSlidePanel: React.FC<HeroSlidePanelProps> = ({
   return (
     <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
       {/* Left panel — yellow background with text content */}
-      <div className="flex flex-col justify-center rounded-l-xl bg-[#F5C518] p-8 pb-20 lg:p-12 lg:pb-24">
-        <h3 className="mb-4 text-xl font-bold leading-tight text-black lg:text-2xl xl:text-3xl">
+      <div className="hero-slide-panel flex flex-col justify-center rounded-l-xl bg-primary text-primary-foreground">
+        <h3 className="mb-4 text-xl font-bold leading-tight lg:text-2xl xl:text-3xl text-inherit">
           {slide.headline}
         </h3>
 
         {slide.content && (
-          <div className="mb-6 text-sm leading-relaxed text-black/80 lg:text-base">
-            <RichText data={slide.content} enableGutter={false} />
+          <div className="mb-6 text-sm leading-relaxed opacity-80 lg:text-base text-inherit">
+            <RichText data={slide.content} enableGutter={false} className="text-inherit" />
           </div>
         )}
 
         {slide.label && slide.url && (
           <div>
-            <Link
-              href={slide.url}
-              className="inline-block rounded-sm border-2 border-black bg-black px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-black"
-            >
+            <Link href={slide.url} className="btn-primary">
               {slide.label}
             </Link>
           </div>
