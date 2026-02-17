@@ -108,16 +108,18 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  fallbackLocale: null;
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('en' | 'fr') | ('en' | 'fr')[];
   globals: {
     header: Header;
     footer: Footer;
+    languages: Language;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    languages: LanguagesSelect<false> | LanguagesSelect<true>;
   };
-  locale: null;
+  locale: 'en' | 'fr';
   user: User;
   jobs: {
     tasks: {
@@ -1836,6 +1838,37 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "languages".
+ */
+export interface Language {
+  id: number;
+  /**
+   * Manage display metadata for each locale. The locale codes must match the ones defined in the Payload config.
+   */
+  languages: {
+    /**
+     * Must match a locale defined in payload.config.ts
+     */
+    code: 'en' | 'fr';
+    /**
+     * Display name shown in the language selector (e.g. "English", "Français")
+     */
+    label: string;
+    /**
+     * Optional flag or icon displayed next to the language name
+     */
+    flag?: (number | null) | Media;
+    /**
+     * Mark one language as the default
+     */
+    isDefault?: boolean | null;
+    id?: string | null;
+  }[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1965,6 +1998,24 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "languages_select".
+ */
+export interface LanguagesSelect<T extends boolean = true> {
+  languages?:
+    | T
+    | {
+        code?: T;
+        label?: T;
+        flag?: T;
+        isDefault?: T;
         id?: T;
       };
   updatedAt?: T;
