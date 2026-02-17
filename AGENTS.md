@@ -1530,13 +1530,13 @@ The following Next.js documentation files are available in the `.next-docs/` dir
 
 **Usage**: Reference these files when answering Next.js-related questions. The files contain comprehensive documentation for Next.js features, APIs, and best practices.
 
-**Last Updated**: 2026-02-12T15:50:53.543Z
+**Last Updated**: 2026-02-16T09:34:53.895Z
 
 <!-- NEXTJS-DOCS-END -->
 
 <!-- PAYLOAD-DOCS-START -->
 
-## Payload CMS Documentation Index (v3.74.0)
+## Payload CMS Documentation Index (v3.76.0)
 
 The following Payload CMS documentation files are available in the `.payload-docs/` directory:
 
@@ -1641,11 +1641,11 @@ The following Payload CMS documentation files are available in the `.payload-doc
   - [vercel-content-link.mdx](.payload-docs/integrations/vercel-content-link.mdx) (4.8KB)
 - **jobs-queue/**:
   - [jobs.mdx](.payload-docs/jobs-queue/jobs.mdx) (7.8KB)
-  - [overview.mdx](.payload-docs/jobs-queue/overview.mdx) (4.6KB)
-  - [queues.mdx](.payload-docs/jobs-queue/queues.mdx) (13.9KB)
-  - [quick-start-example.mdx](.payload-docs/jobs-queue/quick-start-example.mdx) (3.8KB)
-  - [schedules.mdx](.payload-docs/jobs-queue/schedules.mdx) (13.8KB)
-  - [tasks.mdx](.payload-docs/jobs-queue/tasks.mdx) (17.5KB)
+  - [overview.mdx](.payload-docs/jobs-queue/overview.mdx) (9.3KB)
+  - [queues.mdx](.payload-docs/jobs-queue/queues.mdx) (19.4KB)
+  - [quick-start-example.mdx](.payload-docs/jobs-queue/quick-start-example.mdx) (8.9KB)
+  - [schedules.mdx](.payload-docs/jobs-queue/schedules.mdx) (16.6KB)
+  - [tasks.mdx](.payload-docs/jobs-queue/tasks.mdx) (21.2KB)
   - [workflows.mdx](.payload-docs/jobs-queue/workflows.mdx) (21.8KB)
 - **live-preview/**:
   - [client.mdx](.payload-docs/live-preview/client.mdx) (12.8KB)
@@ -1664,7 +1664,7 @@ The following Payload CMS documentation files are available in the `.payload-doc
 - **plugins/**:
   - [build-your-own.mdx](.payload-docs/plugins/build-your-own.mdx) (10.4KB)
   - [form-builder.mdx](.payload-docs/plugins/form-builder.mdx) (25.8KB)
-  - [import-export.mdx](.payload-docs/plugins/import-export.mdx) (24.6KB)
+  - [import-export.mdx](.payload-docs/plugins/import-export.mdx) (27.1KB)
   - [mcp.mdx](.payload-docs/plugins/mcp.mdx) (16.9KB)
   - [multi-tenant.mdx](.payload-docs/plugins/multi-tenant.mdx) (12.1KB)
   - [nested-docs.mdx](.payload-docs/plugins/nested-docs.mdx) (10.1KB)
@@ -1718,6 +1718,6 @@ The following Payload CMS documentation files are available in the `.payload-doc
 
 **Usage**: Reference these files when answering Payload CMS-related questions. The files contain comprehensive documentation for Payload CMS features, APIs, configuration, and best practices.
 
-**Last Updated**: 2026-02-12T15:50:53.544Z
+**Last Updated**: 2026-02-16T09:34:53.896Z
 
 <!-- PAYLOAD-DOCS-END -->
