@@ -14,6 +14,7 @@ import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
 
 import { HeroCarousel } from '@/components/HeroCarousel'
+import { InfoSections } from '@/components/InfoSection'
 import { getServerSideURL } from '@/utilities/getURL'
 import './globals.css'
 
@@ -37,6 +38,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
           <Header />
           <HeroCarousel />
+          <InfoSections />
           <Footer />
         </Providers>
       </body>

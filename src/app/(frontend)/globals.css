@@ -282,3 +282,67 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+/* InfoSection accordion — yellow bullet points */
+.info-section-accordion-content ul {
+  list-style: none;
+  padding-left: 1.25rem;
+}
+
+.info-section-accordion-content ul li {
+  position: relative;
+  padding-left: 0.25rem;
+}
+
+.info-section-accordion-content ul li::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 0.55em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #f5c518;
+}
+
+/* InfoSection tables — yellow card grid style (override prose) */
+.info-section-content table,
+.info-section-accordion-content table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0.5rem !important;
+}
+
+.info-section-content td,
+.info-section-content th,
+.info-section-accordion-content td,
+.info-section-accordion-content th {
+  position: relative;
+  background-color: rgba(245, 197, 24, 0.15) !important;
+  border: none !important;
+  border-radius: 0.75rem !important;
+  padding: 0 !important;
+  text-align: center !important;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.info-section-content td a,
+.info-section-content th a,
+.info-section-accordion-content td a,
+.info-section-accordion-content th a {
+  display: block;
+  padding: 1rem 1.25rem;
+  color: inherit !important;
+  text-decoration: underline;
+  width: 100%;
+  height: 100%;
+}
+
+.info-section-content td:hover,
+.info-section-content th:hover,
+.info-section-accordion-content td:hover,
+.info-section-accordion-content th:hover {
+  background-color: #f5c518 !important;
+}
