@@ -73,6 +73,7 @@ export interface Config {
     categories: Category;
     users: User;
     heroSlides: HeroSlide;
+    infoSection: InfoSection;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -96,6 +97,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     heroSlides: HeroSlidesSelect<false> | HeroSlidesSelect<true>;
+    infoSection: InfoSectionSelect<false> | InfoSectionSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -815,6 +817,52 @@ export interface HeroSlide {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "infoSection".
+ */
+export interface InfoSection {
+  id: number;
+  title: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  subcontentdropdown?:
+    | {
+        label: string;
+        subcontent: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1026,6 +1074,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'heroSlides';
         value: number | HeroSlide;
+      } | null)
+    | ({
+        relationTo: 'infoSection';
+        value: number | InfoSection;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1402,6 +1454,23 @@ export interface HeroSlidesSelect<T extends boolean = true> {
   label?: T;
   url?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "infoSection_select".
+ */
+export interface InfoSectionSelect<T extends boolean = true> {
+  title?: T;
+  content?: T;
+  subcontentdropdown?:
+    | T
+    | {
+        label?: T;
+        subcontent?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
