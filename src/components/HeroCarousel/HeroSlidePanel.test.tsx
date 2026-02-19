@@ -5,6 +5,7 @@ import type { CarouselSlide } from './HeroCarouselClient'
 
 // Mock the Media component
 vi.mock('@/components/Media', () => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Media: ({ resource, priority }: any) => (
     <div data-testid="media-component" data-priority={priority}>
       {resource?.alt || 'Mock Media'}
@@ -14,11 +15,13 @@ vi.mock('@/components/Media', () => ({
 
 // Mock the RichText component
 vi.mock('@/components/RichText', () => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   default: ({ data }: any) => <div data-testid="rich-text">{JSON.stringify(data)}</div>,
 }))
 
 // Mock next/link
 vi.mock('next/link', () => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   default: ({ children, href, className }: any) => (
     <a href={href} className={className}>
       {children}

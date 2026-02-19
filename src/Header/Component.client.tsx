@@ -8,14 +8,13 @@ import type { Header, Language } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
-import { cn } from '@/utilities/ui'
 
 interface HeaderClientProps {
   data: Header
   languages?: Language['languages']
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = ({ data, languages }) => {
+export const HeaderClient: React.FC<HeaderClientProps> = ({ data, languages: _languages }) => {
   /* Storing the value in a useState to avoid hydration errors */
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()

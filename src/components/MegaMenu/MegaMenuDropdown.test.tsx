@@ -1,9 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { render, screen, fireEvent, within } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { MegaMenuDropdown } from './MegaMenuDropdown'
 
 // Mock the CMSLink component
 vi.mock('@/components/Link', () => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   CMSLink: ({ children, className, onClick }: any) => (
     <a className={className} onClick={onClick} href="#mock">
       {children}
