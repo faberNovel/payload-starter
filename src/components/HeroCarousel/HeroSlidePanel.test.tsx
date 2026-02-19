@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { HeroSlidePanel } from './HeroSlidePanel'
-import type { HeroSlide } from '@/payload-types'
+import type { CarouselSlide } from './HeroCarouselClient'
 
 // Mock the Media component
 vi.mock('@/components/Media', () => ({
@@ -28,14 +28,16 @@ vi.mock('next/link', () => ({
 
 describe('HeroSlidePanel', () => {
   const mockImage = {
-    id: 'img-1',
+    id: 1,
     alt: 'Test image',
     url: '/test-image.jpg',
     width: 1200,
     height: 800,
+    updatedAt: '2026-01-01T00:00:00.000Z',
+    createdAt: '2026-01-01T00:00:00.000Z',
   }
 
-  const mockSlide: HeroSlide = {
+  const mockSlide: CarouselSlide = {
     id: 'slide-1',
     headline: 'Test Headline',
     content: {
@@ -44,9 +46,14 @@ describe('HeroSlidePanel', () => {
         children: [
           {
             type: 'paragraph',
+            version: 1,
             children: [{ type: 'text', text: 'Test content' }],
           },
         ],
+        direction: null,
+        format: '',
+        indent: 0,
+        version: 1,
       },
     },
     label: 'Learn More',
@@ -259,7 +266,7 @@ describe('HeroSlidePanel', () => {
 
   describe('Edge Cases', () => {
     it('should handle slide with all optional fields missing', () => {
-      const minimalSlide: HeroSlide = {
+      const minimalSlide: CarouselSlide = {
         id: 'minimal',
         headline: 'Minimal Slide',
       }
@@ -272,12 +279,12 @@ describe('HeroSlidePanel', () => {
       expect(container.querySelector('[data-testid="media-component"]')).not.toBeInTheDocument()
     })
 
-    it('should handle image as string id reference', () => {
-      const slideWithImageId = { ...mockSlide, image: 'string-id' }
+    it('should handle image as number id reference', () => {
+      const slideWithImageId = { ...mockSlide, image: 123 }
       const { container } = render(
         <HeroSlidePanel slide={slideWithImageId} isFirst={false} imageAspectRatio={0.667} />,
       )
-      // When image is string, Media component should not render
+      // When image is number, Media component should not render
       expect(container.querySelector('[data-testid="media-component"]')).not.toBeInTheDocument()
     })
 
