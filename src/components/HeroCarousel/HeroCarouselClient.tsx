@@ -3,13 +3,37 @@
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel'
 import * as React from 'react'
 
-import type { HeroSlide } from '@/payload-types'
+import type { Media } from '@/payload-types'
 
 import { CarouselControls } from './CarouselControls'
 import { HeroSlidePanel } from './HeroSlidePanel'
 
+export type CarouselSlide = {
+  headline: string
+  content?: {
+    root: {
+      type: string
+      children: {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        type: any
+        version: number
+        [k: string]: unknown
+      }[]
+      direction: ('ltr' | 'rtl') | null
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+      indent: number
+      version: number
+    }
+    [k: string]: unknown
+  } | null
+  label?: string | null
+  url?: string | null
+  image?: (number | null) | Media
+  id?: string | null
+}
+
 interface HeroCarouselClientProps {
-  slides: HeroSlide[]
+  slides: CarouselSlide[]
   /** height/width ratio of the tallest image, used to lock carousel height */
   imageAspectRatio: number
 }

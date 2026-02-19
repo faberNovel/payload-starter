@@ -184,6 +184,14 @@
   }
 }
 
+.EY-logo {
+  fill: var(--neutral);
+}
+
+footer .EY-logo {
+  fill: white;
+}
+
 /* === LIENS ey === */
 @layer base {
   a {

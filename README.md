@@ -108,8 +108,41 @@ Create unique page layouts for any type of content using a powerful layout build
 - Media
 - Call To Action
 - Archive
+- Carousel
 
 Each block is fully designed and built into the front-end website that comes with this template. See [Website](#website) for more details.
+
+### Using the Carousel Block
+
+The Carousel block allows you to create interactive image carousels with multiple slides. Each slide can contain:
+
+- **Title**: A heading for the slide (localized)
+- **Description**: Text content to accompany the image (localized)
+- **Image**: An uploaded media file from your Media collection
+
+**Admin Configuration Options:**
+
+- **Slides**: Add between 1 and 10 slides to your carousel
+- **Autoplay**: Enable automatic slide transitions (not yet implemented in frontend)
+- **Show Navigation Dots**: Display a slide counter below the carousel
+
+**How to add a Carousel to a Page:**
+
+1. Navigate to **Pages** in the admin panel
+2. Create a new page or edit an existing one
+3. Go to the **Content** tab
+4. Click **+ Add block**
+5. Select **Carousel** from the list of available blocks
+6. Click **+ Add Slide** to create your first slide
+7. Fill in the slide details:
+   - Enter a **Title** (required)
+   - Add a **Description** (optional)
+   - Select or upload an **Image** (optional)
+8. Add more slides by clicking **+ Add Slide** again
+9. Configure carousel settings (Autoplay, Show Navigation Dots)
+10. Save your page and preview it
+
+The carousel will automatically display with previous/next navigation arrows and show the current slide number when "Show Navigation Dots" is enabled.
 
 ## Lexical editor
 

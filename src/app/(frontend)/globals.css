@@ -118,7 +118,7 @@
   --muted-foreground: oklch(55% 0.005 265deg);
 
   /* Accent - Ey yellow for highlights */
-  --accent: oklch(73% 0.15 75deg);
+  --accent: oklch(93% 0.21 103deg);
   --accent-foreground: oklch(20% 0.08 265deg);
 
   /* Destructive - Red for errors */
@@ -156,6 +156,8 @@
   --success: oklch(73% 0.15 75deg);
   --warning: oklch(75% 0.18 60deg);
   --error: oklch(62% 0.22 25deg);
+
+  --neutral: oklch(0% 0 0);
 }
 
 [data-theme='dark'] {
@@ -186,7 +188,7 @@
   --muted-foreground: oklch(70% 0 0deg);
 
   /* Accent - Ey yellow */
-  --accent: oklch(73% 0.15 75deg);
+  --accent: oklch(93% 0.21 103deg);
   --accent-foreground: oklch(20% 0.08 265deg);
 
   /* Destructive */
@@ -221,6 +223,8 @@
   --success: oklch(73% 0.15 75deg);
   --warning: oklch(65% 0.15 60deg);
   --error: oklch(55% 0.18 25deg);
+
+  --neutral: oklch(100% 0 0deg);
 }
 
 @theme inline {

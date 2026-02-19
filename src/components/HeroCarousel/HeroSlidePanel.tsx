@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 
-import type { HeroSlide } from '@/payload-types'
+import type { CarouselSlide } from './HeroCarouselClient'
 
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
 
 interface HeroSlidePanelProps {
-  slide: HeroSlide
+  slide: CarouselSlide
   isFirst: boolean
   /** height/width ratio of the tallest image */
   imageAspectRatio: number

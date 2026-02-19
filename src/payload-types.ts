@@ -72,7 +72,6 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
-    heroSlides: HeroSlide;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -95,7 +94,6 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
-    heroSlides: HeroSlidesSelect<false> | HeroSlidesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -202,7 +200,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | CarouselBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -784,34 +782,36 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "heroSlides".
+ * via the `definition` "CarouselBlock".
  */
-export interface HeroSlide {
-  id: number;
-  headline: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  label: string;
-  url: string;
-  /**
-   * Image displayed next to the slide
-   */
-  image?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
+export interface CarouselBlock {
+  slides?:
+    | {
+        headline: string;
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        label?: string | null;
+        url?: string | null;
+        image?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'carouselBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1024,10 +1024,6 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
-        relationTo: 'heroSlides';
-        value: number | HeroSlide;
-      } | null)
-    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1125,6 +1121,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        carouselBlock?: T | CarouselBlockSelect<T>;
       };
   meta?:
     | T
@@ -1221,6 +1218,24 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CarouselBlock_select".
+ */
+export interface CarouselBlockSelect<T extends boolean = true> {
+  slides?:
+    | T
+    | {
+        headline?: T;
+        content?: T;
+        label?: T;
+        url?: T;
+        image?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1391,19 +1406,6 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "heroSlides_select".
- */
-export interface HeroSlidesSelect<T extends boolean = true> {
-  headline?: T;
-  content?: T;
-  label?: T;
-  url?: T;
-  image?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
