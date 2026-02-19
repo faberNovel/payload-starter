@@ -3,7 +3,7 @@
 import React, { useRef, useState } from 'react'
 import type { AccordionBlock as AccordionBlockType } from '@/payload-types'
 import RichText from '@/components/RichText'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Minus, Plus } from 'lucide-react'
 import { cn } from '@/utilities/ui'
 
 type Props = AccordionBlockType & {
@@ -47,7 +47,14 @@ function AccordionItem({ title, content, index }: AccordionItemProps) {
             isOpen && 'text-primary',
           )}
         >
-          <span>{title}</span>
+          <div className="flex items-center gap-4">
+            {isOpen ? (
+              <Minus className={cn('h-5 w-5 text-primary')} aria-hidden="true" />
+            ) : (
+              <Plus className={cn('h-5 w-5 text-primary')} aria-hidden="true" />
+            )}
+            <span>{title}</span>
+          </div>
           <ChevronDown
             className={cn(
               'h-5 w-5 shrink-0 text-primary transition-transform duration-300',

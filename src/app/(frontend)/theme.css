@@ -624,7 +624,6 @@ footer .EY-logo {
 @layer base {
   * {
     scrollbar-width: thin;
-    scrollbar-color: oklch(73% 0.15 75deg) oklch(96% 0 0deg);
   }
 
   *::-webkit-scrollbar {
