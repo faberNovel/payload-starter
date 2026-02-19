@@ -43,7 +43,8 @@ function AccordionItem({ title, content, index }: AccordionItemProps) {
             'flex w-full items-center justify-between gap-4',
             'px-[1.5625rem] py-5 text-left font-semibold',
             'text-foreground transition-colors duration-300',
-            'bg-secondary',
+            'hover:bg-secondary',
+            isOpen && 'bg-secondary',
             isOpen && 'text-primary',
           )}
         >
