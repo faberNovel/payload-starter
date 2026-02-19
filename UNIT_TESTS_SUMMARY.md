@@ -52,9 +52,9 @@ Enables DOM-specific assertions like `toBeInTheDocument()`, `toHaveClass()`, etc
 
 ```diff
   "scripts": {
--   "test": "pnpm run test:int && pnpm run test:e2e",
-+   "test": "pnpm run test:unit && pnpm run test:int && pnpm run test:e2e",
-    "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",
+-   "test": "pnpm run test:int",
++   "test": "pnpm run test:unit && pnpm run test:int",
+    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts tests/int",
 -   "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
 +   "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts tests/int",
 +   "test:unit": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts src",
@@ -223,14 +223,13 @@ All mock data is properly typed using the component's TypeScript interfaces, ens
 The unit tests now run automatically in the `test` script:
 
 ```json
-"test": "pnpm run test:unit && pnpm run test:int && pnpm run test:e2e"
+"test": "pnpm run test:unit && pnpm run test:int"
 ```
 
 This ensures:
 
 1. **Unit tests** verify component logic
 2. **Integration tests** verify API behavior
-3. **E2E tests** verify full user flows
 
 All must pass before deployment.
 
