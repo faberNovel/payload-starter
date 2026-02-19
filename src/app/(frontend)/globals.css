@@ -110,7 +110,7 @@
   --primary-foreground: oklch(100% 0 0deg);
 
   /* Secondary color - Ey yellow/gold (#E6A83D) */
-  --secondary: oklch(73% 0.15 75deg);
+  --secondary: oklch(93% 0.21 103deg);
   --secondary-foreground: oklch(20% 0.08 265deg);
 
   /* Muted - Light gray */
@@ -130,10 +130,10 @@
   --input: oklch(87% 0.002 265deg);
 
   /* Focus ring - Ey yellow */
-  --ring: oklch(73% 0.15 75deg);
+  --ring: oklch(93% 0.21 103deg);
 
   /* Charts - Ey palette */
-  --chart-1: oklch(73% 0.15 75deg); /* Ey yellow */
+  --chart-1: oklch(93% 0.21 103deg); /* Ey yellow */
   --chart-2: oklch(20% 0.08 265deg); /* Ey blue */
   --chart-3: oklch(55% 0.1 50deg); /* Complementary orange */
   --chart-4: oklch(65% 0.12 200deg); /* Complementary cyan */
@@ -145,15 +145,15 @@
   /* Sidebar - Ey dark blue */
   --sidebar: oklch(20% 0.08 265deg);
   --sidebar-foreground: oklch(100% 0 0deg);
-  --sidebar-primary: oklch(73% 0.15 75deg);
+  --sidebar-primary: oklch(93% 0.21 103deg);
   --sidebar-primary-foreground: oklch(20% 0.08 265deg);
   --sidebar-accent: oklch(25% 0.08 265deg);
   --sidebar-accent-foreground: oklch(100% 0 0deg);
   --sidebar-border: oklch(30% 0.08 265deg);
-  --sidebar-ring: oklch(73% 0.15 75deg);
+  --sidebar-ring: oklch(93% 0.21 103deg);
 
   /* States - Success (Ey yellow), Warning, Error */
-  --success: oklch(73% 0.15 75deg);
+  --success: oklch(93% 0.21 103deg);
   --warning: oklch(75% 0.18 60deg);
   --error: oklch(62% 0.22 25deg);
 
@@ -176,7 +176,7 @@
   --popover-foreground: oklch(98% 0 0deg);
 
   /* Primary color - Ey yellow in dark mode */
-  --primary: oklch(73% 0.15 75deg);
+  --primary: oklch(93% 0.21 103deg);
   --primary-foreground: oklch(20% 0.08 265deg);
 
   /* Secondary color - Medium blue */
@@ -200,10 +200,10 @@
   --input: oklch(25% 0.08 265deg);
 
   /* Ring */
-  --ring: oklch(73% 0.15 75deg);
+  --ring: oklch(93% 0.21 103deg);
 
   /* Charts */
-  --chart-1: oklch(73% 0.15 75deg);
+  --chart-1: oklch(93% 0.21 103deg);
   --chart-2: oklch(45% 0.12 265deg);
   --chart-3: oklch(60% 0.12 50deg);
   --chart-4: oklch(65% 0.12 200deg);
@@ -212,15 +212,15 @@
   /* Sidebar */
   --sidebar: oklch(18% 0.08 265deg);
   --sidebar-foreground: oklch(98% 0 0deg);
-  --sidebar-primary: oklch(73% 0.15 75deg);
+  --sidebar-primary: oklch(93% 0.21 103deg);
   --sidebar-primary-foreground: oklch(20% 0.08 265deg);
   --sidebar-accent: oklch(25% 0.08 265deg);
   --sidebar-accent-foreground: oklch(98% 0 0deg);
   --sidebar-border: oklch(25% 0.08 265deg);
-  --sidebar-ring: oklch(73% 0.15 75deg);
+  --sidebar-ring: oklch(93% 0.21 103deg);
 
   /* States */
-  --success: oklch(73% 0.15 75deg);
+  --success: oklch(93% 0.21 103deg);
   --warning: oklch(65% 0.15 60deg);
   --error: oklch(55% 0.18 25deg);
 
