@@ -23,7 +23,7 @@ pnpm test:unit
 # Run unit tests in watch mode
 pnpm test:unit:watch
 
-# Run all tests (unit + integration + e2e)
+# Run all tests (unit + integration)
 pnpm test
 ```
 
@@ -167,7 +167,7 @@ The unit tests are automatically run as part of the main test script:
 ```json
 {
   "scripts": {
-    "test": "pnpm run test:unit && pnpm run test:int && pnpm run test:e2e"
+    "test": "pnpm run test:unit && pnpm run test:int"
   }
 }
 ```

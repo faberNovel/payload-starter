@@ -39,6 +39,7 @@ export default buildConfig({
     },
     user: Users.slug,
     // Custom Theme EY
+    // @ts-expect-error css is a valid runtime property not yet reflected in types
     css: path.resolve(dirname, './app/(payload)/admin/custom.scss'),
     livePreview: {
       breakpoints: [

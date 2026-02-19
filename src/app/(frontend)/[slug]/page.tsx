@@ -13,28 +13,51 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
+function isMissingPagesRelation(error: unknown): boolean {
+  if (!error || typeof error !== 'object') return false
+
+  const maybeError = error as {
+    message?: string
+    cause?: { code?: string; message?: string }
+  }
+
+  const code = maybeError.cause?.code
+  const message = `${maybeError.message ?? ''} ${maybeError.cause?.message ?? ''}`
+
+  return code === '42P01' || message.includes('relation "pages" does not exist')
+}
+
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const pages = await payload.find({
-    collection: 'pages',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      slug: true,
-    },
-  })
-
-  const params = pages.docs
-    ?.filter((doc) => {
-      return doc.slug !== 'home'
-    })
-    .map(({ slug }) => {
-      return { slug }
+  try {
+    const payload = await getPayload({ config: configPromise })
+    const pages = await payload.find({
+      collection: 'pages',
+      draft: false,
+      limit: 1000,
+      overrideAccess: false,
+      pagination: false,
+      select: {
+        slug: true,
+      },
     })
 
-  return params
+    const params = pages.docs
+      ?.filter((doc) => {
+        return doc.slug !== 'home'
+      })
+      .map(({ slug }) => {
+        return { slug }
+      })
+
+    return params
+  } catch (error) {
+    if (isMissingPagesRelation(error)) {
+      console.warn('[generateStaticParams] pages table missing, skipping static params.')
+      return []
+    }
+
+    throw error
+  }
 }
 
 type Args = {

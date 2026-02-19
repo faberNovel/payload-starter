@@ -17,38 +17,37 @@ const eslintConfig = [
       'dist/**',
       'build/**',
       'out/**',
-      
+
       // Dependencies
       'node_modules/**',
-      
+
       // Payload
       '.payload/**',
-      
+
       // Cache and temp files
       '.cache/**',
       '.turbo/**',
       '.vercel/**',
       '.swc/**',
-      
+
       // Public assets
       'public/**',
-      
+
       // Test coverage
       'coverage/**',
-      
+
       // Docker
       '.docker/**',
-      
+
       // Generated files
       '**/payload-types.ts',
       '**/importMap.js',
-      
+
       // Specific config files
       'next.config.js',
       'postcss.config.js',
       'tailwind.config.mjs',
       'vitest.config.mts',
-      'playwright.config.ts',
       'next-sitemap.config.cjs',
     ],
   },
