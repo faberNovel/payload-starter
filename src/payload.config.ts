@@ -7,7 +7,6 @@ import { fileURLToPath } from 'url'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { DEFAULT_LOCALE, LOCALE_CODES } from '@/i18n/locales'
 import { Categories } from './collections/Categories'
-import { HeroSlides } from './collections/HeroSlides'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
@@ -71,7 +70,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URL || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users, HeroSlides],
+  collections: [Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Languages],
   plugins,

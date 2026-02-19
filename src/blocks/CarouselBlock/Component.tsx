@@ -2,8 +2,10 @@
 
 import React from 'react'
 import type { CarouselBlock as CarouselBlockType } from '@/payload-types'
-import { HeroCarouselClient } from '@/components/HeroCarousel/HeroCarouselClient'
-import type { HeroSlide } from '@/payload-types'
+import {
+  HeroCarouselClient,
+  type CarouselSlide,
+} from '@/components/HeroCarousel/HeroCarouselClient'
 
 type Props = CarouselBlockType & {
   disableInnerContainer?: boolean
@@ -21,8 +23,8 @@ export const CarouselBlock: React.FC<Props> = ({ slides }) => {
     }
   }
 
-  // Convert our slides to HeroSlide format (they already match!)
-  const heroSlides = slides as unknown as HeroSlide[]
+  // Slides already match CarouselSlide format
+  const carouselSlides = slides as CarouselSlide[]
 
-  return <HeroCarouselClient slides={heroSlides} imageAspectRatio={tallestRatio || 0.44} />
+  return <HeroCarouselClient slides={carouselSlides} imageAspectRatio={tallestRatio || 0.44} />
 }
