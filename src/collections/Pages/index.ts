@@ -4,6 +4,7 @@ import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
+import { AccordionBlock } from '../../blocks/AccordionBlock/config'
 import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { CarouselBlock } from '../../blocks/CarouselBlock/config'
@@ -74,7 +75,15 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, CarouselBlock],
+              blocks: [
+                AccordionBlock,
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                CarouselBlock,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

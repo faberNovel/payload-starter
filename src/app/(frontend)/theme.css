@@ -53,8 +53,8 @@
   }
 
   .btn-primary:hover {
-    background-color: oklch(68% 0.17 75deg);
-    box-shadow: 0 6px 20px oklch(73% 0.15 75deg / 0.3);
+    background-color: oklch(95% 0.3 103deg);
+    box-shadow: 0 6px 20px oklch(12.148% 0.00312 106.932 / 0.3);
     transform: scale(1.05);
     text-decoration: none;
   }
