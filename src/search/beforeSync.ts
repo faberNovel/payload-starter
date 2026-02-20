@@ -1,42 +1,57 @@
 import { BeforeSync, DocToSync } from '@payloadcms/plugin-search/types'
+import type {
+  SerializedEditorState,
+  SerializedLexicalNode,
+} from '@payloadcms/richtext-lexical/lexical'
 import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintext'
 
 /**
- * Maps each block type to its array field and the richText sub-field within each item.
- * To support a new block, just add an entry here.
+ * Checks whether a value looks like Lexical richText data.
  */
-const BLOCK_RICHTEXT_PATHS: Record<string, { arrayField: string; richTextField: string }> = {
-  carouselBlock: { arrayField: 'slides', richTextField: 'content' },
-  accordionBlock: { arrayField: 'items', richTextField: 'content' },
-  content: { arrayField: 'columns', richTextField: 'richText' },
+function isLexicalData(value: unknown): value is SerializedEditorState<SerializedLexicalNode> {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    'root' in value &&
+    typeof (value as any).root === 'object' &&
+    'type' in (value as any).root
+  )
+}
+
+/**
+ * Recursively walks any value and extracts plain text from every Lexical richText
+ * field it encounters. Works with any block type or nesting depth — no manual
+ * registration needed.
+ */
+function collectRichText(value: unknown, parts: string[]): void {
+  if (value == null || typeof value !== 'object') return
+
+  if (isLexicalData(value)) {
+    const text = convertLexicalToPlaintext({ data: value })
+    if (text) parts.push(text)
+    return
+  }
+
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      collectRichText(item, parts)
+    }
+    return
+  }
+
+  for (const key of Object.keys(value as Record<string, unknown>)) {
+    collectRichText((value as Record<string, unknown>)[key], parts)
+  }
 }
 
 /**
  * Extracts plain text from all richText fields found in layout blocks.
  */
-function extractBlocksPlaintext(layout: any[]): string {
+function extractBlocksPlaintext(layout: unknown): string {
   if (!Array.isArray(layout)) return ''
 
   const parts: string[] = []
-
-  for (const block of layout) {
-    if (!block) continue
-
-    const path = BLOCK_RICHTEXT_PATHS[block.blockType]
-    if (!path) continue
-
-    const items = block[path.arrayField]
-    if (!Array.isArray(items)) continue
-
-    for (const item of items) {
-      const richText = item?.[path.richTextField]
-      if (!richText) continue
-
-      const text = convertLexicalToPlaintext({ data: richText })
-      if (text) parts.push(text)
-    }
-  }
-
+  collectRichText(layout, parts)
   return parts.join(' ').trim()
 }
 
