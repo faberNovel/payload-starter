@@ -48,9 +48,8 @@ export const seed = async ({
     globals.map((global) =>
       payload.updateGlobal({
         slug: global,
-        data: {
-          navItems: [],
-        },
+        data: {},
+
         depth: 0,
         context: {
           disableRevalidate: true,
@@ -245,30 +244,20 @@ export const seed = async ({
     payload.updateGlobal({
       slug: 'footer',
       data: {
-        navItems: [
+        columns: [
           {
-            link: {
-              type: 'custom',
-              label: 'Admin',
-              url: '/admin',
-            },
+            title: 'Resources',
+            content: undefined,
           },
-          {
-            link: {
-              type: 'custom',
-              label: 'Source Code',
-              newTab: true,
-              url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
-            },
-          },
-          {
-            link: {
-              type: 'custom',
-              label: 'Payload',
-              newTab: true,
-              url: 'https://payloadcms.com/',
-            },
-          },
+        ],
+        legalLinks: [
+          { label: 'Site Map', url: '/sitemap' },
+          { label: 'RSS Feed', url: '/rss' },
+          { label: 'Terms & Conditions', url: '/cgv', newTab: true },
+          { label: 'Legal Notice', url: '/mentions-legales' },
+          { label: 'Private Higher Education Institution', url: '' },
+          { label: 'Privacy Policy', url: '/privacy' },
+          { label: 'Cookie Settings', url: '#cookies' },
         ],
       },
     }),

@@ -46,7 +46,7 @@ export const HeroSlidePanel: React.FC<HeroSlidePanelProps> = ({
 
       {/* Right panel — height locked to tallest image aspect ratio */}
       <div
-        className="relative overflow-hidden rounded-r-xl"
+        className="relative overflow-hidden rounded-r-xl h-full"
         style={cssAspectRatio ? { aspectRatio: `${cssAspectRatio}` } : undefined}
       >
         {slide.image && typeof slide.image === 'object' && (

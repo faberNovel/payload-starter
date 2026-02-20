@@ -1913,23 +1913,73 @@ export interface Header {
  */
 export interface Footer {
   id: number;
-  navItems?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
+  /**
+   * Optional top band: branding (left) + social networks (right).
+   */
+  topBlock?: {
+    enabled?: boolean | null;
+    slogan?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    partnerLogos?:
+      | {
+          logo: number | Media;
+          alt?: string | null;
           url?: string | null;
-          label: string;
-        };
+          id?: string | null;
+        }[]
+      | null;
+    socialNetworksTitle?: string | null;
+    socialNetworks?:
+      | {
+          platform: 'facebook' | 'twitter' | 'linkedin' | 'instagram' | 'youtube' | 'tiktok';
+          url: string;
+          label?: string | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  columns?:
+    | {
+        title?: string | null;
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Links or text separated by dashes (e.g., Privacy Policy, Terms, etc.)
+   */
+  legalLinks?:
+    | {
+        label: string;
+        url?: string | null;
+        newTab?: boolean | null;
         id?: string | null;
       }[]
     | null;
@@ -2086,18 +2136,42 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?:
+  topBlock?:
     | T
     | {
-        link?:
+        enabled?: T;
+        slogan?: T;
+        partnerLogos?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
+              logo?: T;
+              alt?: T;
+              url?: T;
+              id?: T;
+            };
+        socialNetworksTitle?: T;
+        socialNetworks?:
+          | T
+          | {
+              platform?: T;
               url?: T;
               label?: T;
+              id?: T;
             };
+      };
+  columns?:
+    | T
+    | {
+        title?: T;
+        content?: T;
+        id?: T;
+      };
+  legalLinks?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        newTab?: T;
         id?: T;
       };
   updatedAt?: T;
