@@ -26,10 +26,9 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
   }
 
   return (
-    <>
+    <nav className="flex gap-3 items-center">
       {hasMegaMenu ? (
-        // Mega menu navigation - categories on the left
-        <nav className="flex gap-3 items-center">
+        <>
           {navCategories.map((category, index) => {
             const isOpen = openCategory === index
             return (
@@ -49,23 +48,19 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
               </div>
             )
           })}
-          <Link href="/search">
-            <span className="sr-only">Search</span>
-            <SearchIcon className="w-5 text-primary" />
-          </Link>
-        </nav>
+        </>
       ) : (
-        // Standard navigation
-        <nav className="flex gap-3 items-center">
+        <>
           {navItems.map(({ link }, i) => {
             return <CMSLink key={i} {...link} appearance="link" />
           })}
-          <Link href="/search">
-            <span className="sr-only">Search</span>
-            <SearchIcon className="w-5 text-primary" />
-          </Link>
-        </nav>
+        </>
       )}
-    </>
+
+      <Link href="/search">
+        <span className="sr-only">Search</span>
+        <SearchIcon className="w-5 text-primary" />
+      </Link>
+    </nav>
   )
 }
