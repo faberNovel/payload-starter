@@ -58,12 +58,11 @@ const SocialIcon = ({ platform }: { platform: SocialPlatform }) => {
 export async function Footer() {
   const footerData: Footer = await getCachedGlobal('footer', 1)()
 
-  const { topBlock, columns } = footerData
+  const { topBlock, columns, legalLinks } = footerData
   const hasTopBlock = topBlock?.enabled
   const hasColumns = Array.isArray(columns) && columns.length > 0
+  const hasLegalLinks = Array.isArray(legalLinks) && legalLinks.length > 0
 
-  console.log('Footer data:', footerData) // Debug log to check the fetched data
-  console.log('Footer data:', hasColumns) // Debug log to check the fetched data
   return (
     <footer role="contentinfo" className="mt-auto bg-neutral-900 text-white">
       {/* ── Top block ─────────────────────────────────────────────────────── */}
@@ -163,6 +162,33 @@ export async function Footer() {
                 )}
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* ── Legal bar: bottom links ────────────────────────────────────────── */}
+      {hasLegalLinks && (
+        <div className="border-t border-neutral-800 bg-black">
+          <div className="container py-4">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-neutral-500">
+              {legalLinks!.map((item, i) => (
+                <React.Fragment key={item.id ?? i}>
+                  {i > 0 && <span aria-hidden="true">-</span>}
+                  {item.url ? (
+                    <a
+                      href={item.url}
+                      target={item.newTab ? '_blank' : undefined}
+                      rel={item.newTab ? 'noopener noreferrer' : undefined}
+                      className="hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <span>{item.label}</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
           </div>
         </div>
       )}

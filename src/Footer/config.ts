@@ -139,6 +139,36 @@ export const Footer: GlobalConfig = {
         },
       ],
     },
+
+    // ─── LEGAL BAR: bottom legal links ───────────────────────────────────────
+    {
+      name: 'legalLinks',
+      type: 'array',
+      label: 'Legal Links (bottom bar)',
+      admin: {
+        description: 'Links or text separated by dashes (e.g., Privacy Policy, Terms, etc.)',
+      },
+      fields: [
+        {
+          name: 'label',
+          type: 'text',
+          required: true,
+          label: 'Label',
+        },
+        {
+          name: 'url',
+          type: 'text',
+          label: 'URL (optional - leave empty for plain text)',
+          admin: { placeholder: 'https://...' },
+        },
+        {
+          name: 'newTab',
+          type: 'checkbox',
+          label: 'Open in new tab',
+          defaultValue: false,
+        },
+      ],
+    },
   ],
   hooks: {
     afterChange: [revalidateFooter],

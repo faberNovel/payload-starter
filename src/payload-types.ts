@@ -1972,6 +1972,17 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Links or text separated by dashes (e.g., Privacy Policy, Terms, etc.)
+   */
+  legalLinks?:
+    | {
+        label: string;
+        url?: string | null;
+        newTab?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2153,6 +2164,14 @@ export interface FooterSelect<T extends boolean = true> {
     | {
         title?: T;
         content?: T;
+        id?: T;
+      };
+  legalLinks?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        newTab?: T;
         id?: T;
       };
   updatedAt?: T;

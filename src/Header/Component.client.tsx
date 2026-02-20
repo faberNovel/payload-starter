@@ -9,7 +9,6 @@ import type { Header, Language } from '@/payload-types'
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
-import { cn } from '@/utilities/ui'
 
 interface HeaderClientProps {
   data: Header

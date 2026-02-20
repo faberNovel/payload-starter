@@ -250,6 +250,15 @@ export const seed = async ({
             content: undefined,
           },
         ],
+        legalLinks: [
+          { label: 'Site Map', url: '/sitemap' },
+          { label: 'RSS Feed', url: '/rss' },
+          { label: 'Terms & Conditions', url: '/cgv', newTab: true },
+          { label: 'Legal Notice', url: '/mentions-legales' },
+          { label: 'Private Higher Education Institution', url: '' },
+          { label: 'Privacy Policy', url: '/privacy' },
+          { label: 'Cookie Settings', url: '#cookies' },
+        ],
       },
     }),
   ])
