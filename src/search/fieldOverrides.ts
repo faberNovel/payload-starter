@@ -58,4 +58,12 @@ export const searchFields: Field[] = [
       },
     ],
   },
+  {
+    name: 'contentBody',
+    type: 'textarea',
+    index: true,
+    admin: {
+      readOnly: true,
+    },
+  },
 ]

@@ -898,8 +898,8 @@ export interface Search {
   title?: string | null;
   priority?: number | null;
   doc: {
-    relationTo: 'posts';
-    value: number | Post;
+    relationTo: 'pages';
+    value: number | Page;
   };
   slug?: string | null;
   meta?: {
@@ -915,6 +915,7 @@ export interface Search {
         id?: string | null;
       }[]
     | null;
+  contentBody?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1644,6 +1645,7 @@ export interface SearchSelect<T extends boolean = true> {
         title?: T;
         id?: T;
       };
+  contentBody?: T;
   updatedAt?: T;
   createdAt?: T;
 }
